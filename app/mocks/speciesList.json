@@ -1,0 +1,121 @@
+[
+    {
+        "id": "Bird",
+        "name": "Bird",
+        "genders": [],
+        "colors": [
+            "Brown",
+            "Gray",
+            "Black",
+            "White",
+            "Yellow",
+            "Orange",
+            "Red",
+            "Blue",
+            "Green",
+            "Purple",
+            "Iridescent"
+        ],
+        "breeds": []
+    },
+    {
+        "id": "Cat",
+        "name": "Cat",
+        "genders": [
+            "Male",
+            "Female"
+        ],
+        "colors": [
+            "Black",
+            "White",
+            "Brown",
+            "Gray",
+            "Ginger",
+            "Cream"
+        ],
+        "breeds": [
+            "Abyssinian",
+            "American Shorthair",
+            "Bengal",
+            "Birman",
+            "Bombay",
+            "British Shorthair",
+            "Maine Coon",
+            "Persian",
+            "Ragdoll",
+            "Siamese",
+            "Sphynx"
+        ]
+    },
+    {
+        "id": "Dog",
+        "name": "Dog",
+        "genders": [
+            "Male",
+            "Female"
+        ],
+        "colors": [
+            "Black",
+            "White",
+            "Brown",
+            "Brindle",
+            "Tan",
+            "Cream",
+            "Gold",
+            "Red",
+            "Fawn",
+            "Liver",
+            "Gray",
+            "Silver",
+            "Merle",
+            "Piebald",
+            "Particolor"
+        ],
+        "breeds": [
+            "Mix",
+            "Labrador Retriever",
+            "Golden Retriever",
+            "German Shepherd",
+            "French Bulldog",
+            "Beagle",
+            "Poodle",
+            "Yorkshire Terrier",
+            "Bulldog",
+            "Boxer",
+            "Dachshund"
+        ]
+    },
+    {
+        "id": "Rabbit",
+        "name": "Rabbit",
+        "genders": [
+            "Male",
+            "Female"
+        ],
+        "colors": [
+            "Black",
+            "White",
+            "Brown",
+            "Gray",
+            "Red",
+            "Gold",
+            "Cream",
+            "Harlequin",
+            "Dutch"
+        ],
+        "breeds": [
+            "American Fuzzy",
+            "Dutch",
+            "Harlequin",
+            "Jersey Wooly",
+            "Lionhead",
+            "Holland Lop",
+            "Netherland Dwarf",
+            "Polish",
+            "Rex",
+            "Silver Fox",
+            "Californian",
+            "Flemish Giant"
+        ]
+    }
+]
