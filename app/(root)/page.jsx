@@ -14,7 +14,7 @@ import SearchPet from './components/SearchPet'
 
 export default function Home () {
   return (
-    <main className='lg:p-10 p-5 pt-24 flex flex-col gap-20'>
+    <main className='lg:p-10 p-5 pt-15 flex flex-col gap-20'>
       <section className='flex flex-col lg:flex-row justify-between items-center gap-5 p-5'>
         <div className='flex-1'>
           <PetForm />
