@@ -236,7 +236,7 @@ export default function Home() {
         <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20'>
           <div className='flex flex-col gap-3'>
             <img
-              src='https://www.pawmaw.com/assets/images/how-it-works/report-pet-image.svg'
+              src='/img/report-pet-image.svg'
               alt=''
             />
             <div className='text-2xl font-bold text-center py-2 bg-red-600 text-white rounded-full'>
@@ -250,7 +250,7 @@ export default function Home() {
           </div>
           <div className='flex flex-col gap-3'>
             <img
-              src='https://www.pawmaw.com/assets/images/how-it-works/report-pet-image.svg'
+              src='/img/report-pet-image.svg'
               alt=''
             />
             <div className='text-2xl font-bold text-center py-2 bg-secondary-600 text-white rounded-full'>
@@ -265,7 +265,7 @@ export default function Home() {
           </div>
           <div className='flex flex-col gap-3'>
             <img
-              src='https://www.pawmaw.com/assets/images/how-it-works/report-pet-image.svg'
+              src='/img/report-pet-image.svg'
               alt=''
             />
             <div className='text-2xl font-bold text-center py-2 bg-primary-600 text-white rounded-full'>
@@ -281,25 +281,21 @@ export default function Home() {
         </div>
       </section>
       <section className='bg-primary-600 rounded-3xl'>
-        <div className='bg-white flex flex-col md:flex-row rounded-full'>
-          <img
-            className='flex-1'
-            src='https://pawmaw-images.s3.ap-southeast-1.amazonaws.com/Public/Static-image/dog-image-01.webp'
-            alt=''
-          />
-          <div className='flex-1 text-center p-5 md:p-10'>
-            <h3 className='text-4xl md:text-6xl font-bold mb-5'>
+        <div className='bg-primary-100 flex flex-col md:flex-row rounded-3xl'>
+          <img className='flex-1 rounded-3xl' src='/img/dog-image-01.png' alt='Dog' />
+          <div className='flex flex-col text-center md:text-right justify-center p-5 md:p-10'>
+            <h3 className='text-3xl md:text-5xl font-bold mb-5'>
               Get Your Pet Back Home
             </h3>
             <p className='text-lg md:text-2xl'>
-              Over 10 million dogs and cats are lost or stolen every year. You
+              Over <b>10 million</b> dogs and cats are lost or stolen every year. You
               can report your missing pets with PetFinder. We can notify
               thousands nearby within a minute.
             </p>
           </div>
         </div>
-        <div className='flex justify-center items-center gap-2 rounded-b-xl text-xl text-center text-white font-bold py-5'>
-          Report Lost PeT
+        <div className='flex justify-center items-center gap-2 rounded-b-xl text-xl text-center text-white font-bold py-5 hover:gap-4'>
+          Report Lost Pet
           <FaArrowRight />
         </div>
       </section>
