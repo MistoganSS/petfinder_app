@@ -16,17 +16,17 @@ export default function PetForm () {
   return (
     <>
       <div className=''>
-        <h1 className='text-5xl leading-relaxed'>
+        <h1 className='text-6xl leading-relaxed'>
           {lostPet ? (
             <>
-              We Can Help Find Your{' '}
-              <span className='text-[#df1d42] font-bold'> Lost Pet. </span>
+              We can help find your{' '}
+              <span className='text-red-600 font-bold'> Lost Pet. </span>
             </>
           ) : (
             <>
-              We Help Reunite{' '}
-              <span className='text-[#e0a900] font-bold'> Found Pet</span> With
-              Their Owners.
+              We help reunite{' '}
+              <span className='text-primary-600 font-bold'> Found Pet</span> with
+              their owners.
             </>
           )}
         </h1>
@@ -39,13 +39,13 @@ export default function PetForm () {
         <div className='flex gap-5 text-xl py-7 font-bold text-slate-300'>
           <button
             onClick={() => setLostPet(true)}
-            className={`p-3 ${lostPet ? 'text-[#df1d42]' : ''}`}
+            className={`p-3 ${lostPet ? 'text-red-600' : ''}`}
           >
             Lost Pet
           </button>
           <button
             onClick={() => setLostPet(false)}
-            className={`p-3 ${!lostPet ? 'text-[#e0a900]' : ''}`}
+            className={`p-3 ${!lostPet ? 'text-primary-600' : ''}`}
           >
             Found Pet
           </button>

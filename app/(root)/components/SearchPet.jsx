@@ -5,7 +5,7 @@ export default function SearchPet () {
     <section className='lg:px-20 flex flex-col items-center gap-10'>
       <h3 className='text-5xl font-bold max-w-screen-md text-center'>
         Search for <span className='text-red-600'> Lost</span>/
-        <span className='text-primary-600'>Found</span> Pets In Your Local Area
+        <span className='text-primary-600'>Found</span> Pets in your local area
       </h3>
       <form className='w-full p-5 grid grid-cols-1 md:grid-cols-4 gap-5 place-items-center justify-items-center lg:text-center bg-primary-400/30 rounded-xl lg:rounded-full'>
         <div className='w-full'>

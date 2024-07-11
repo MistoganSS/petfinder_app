@@ -28,7 +28,7 @@ export const animalList = [
       _converter: {}
     },
     breed: 'Dachshund',
-    dateLastSeen: '2022-12-16',
+    dateLastSeen: '2024-07-04',
     ddLat: -12.0886,
     size: 'Big',
     areaLastSeen: 'San Miguel',

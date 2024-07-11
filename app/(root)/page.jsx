@@ -1,18 +1,21 @@
 import Image from 'next/image'
 import PetForm from '../components/PetForm'
 import { animalList } from '../mocks/animalsList'
+import TimeAgoFrom from './components/TimeAgoFrom'
 import {
-  TbHeart,
   TbShare,
   TbCirclePlus,
   TbBookmark,
   TbMapSearch,
-  TbZoomMoney
+  TbReportMoney,
+  TbFilter,
+  TbSortAscendingShapes,
+  TbChevronDown
 } from 'react-icons/tb'
 import { FaArrowRight } from 'react-icons/fa'
 import SearchPet from './components/SearchPet'
 
-export default function Home () {
+export default function Home() {
   return (
     <main className='lg:p-10 p-5 pt-15 flex flex-col gap-20'>
       <section className='flex flex-col lg:flex-row justify-between items-center gap-5 p-5'>
@@ -20,33 +23,21 @@ export default function Home () {
           <PetForm />
         </div>
         <div className='flex-1 p-10'>
-          <img
-            src='https://pawmaw-images.s3.ap-southeast-1.amazonaws.com/Public/Static-image/home_banner_image_mobile.jpg'
-            alt=''
-          />
+          <img src="/img/home_banner_image_mobile.jpg" alt="Lost pets banner" />
         </div>
       </section>
       <section className='flex flex-col gap-5 lg:flex-row justify-evenly items-center'>
         {/* <div className='flex justify-center items-center w-96 h-96 rounded-full bg-red-700 absolute -start-10 top-14'>
           <div className='w-80 h-80 rounded-full bg-blue-600'></div>
         </div> */}
-        <div className='relative border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-xl h-[475px] w-[257px] shadow-xl'>
+        <div className='relative border-gray-800 bg-gray-800 border-[14px] rounded-xl h-[475px] w-[257px] shadow-xl'>
           <div className='w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute'></div>
           <div className='h-[32px] w-[3px] bg-gray-800 absolute -start-[17px] top-[72px] rounded-s-lg'></div>
           <div className='h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg'></div>
           <div className='h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg'></div>
           <div className='h-[64px] w-[3px] bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg'></div>
-          <div className='rounded-xl overflow-hidden w-[230px] h-[450px] bg-white dark:bg-gray-800'>
-            <img
-              src='https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mockup-1-light.png'
-              className='dark:hidden w-[230px] h-[450px]'
-              alt=''
-            />
-            <img
-              src='https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mockup-1-dark.png'
-              className='hidden dark:block w-[230px] h-[450px]'
-              alt=''
-            />
+          <div className='rounded-xl overflow-hidden w-[230px] h-[450px] bg-white'>
+            <img src='/img/mockup-1-light.png' className='w-[230px] h-[450px]' alt=''/>
           </div>
         </div>
         <div className='text-xl flex flex-col gap-3 font-bold p-5'>
@@ -84,40 +75,9 @@ export default function Home () {
                 type='button'
                 class='flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 sm:w-auto'
               >
-                <svg
-                  class='-ms-0.5 me-2 h-4 w-4'
-                  aria-hidden='true'
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='24'
-                  height='24'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                >
-                  <path
-                    stroke='currentColor'
-                    stroke-linecap='round'
-                    stroke-width='2'
-                    d='M18.796 4H5.204a1 1 0 0 0-.753 1.659l5.302 6.058a1 1 0 0 1 .247.659v4.874a.5.5 0 0 0 .2.4l3 2.25a.5.5 0 0 0 .8-.4v-7.124a1 1 0 0 1 .247-.659l5.302-6.059c.566-.646.106-1.658-.753-1.658Z'
-                  />
-                </svg>
+                <TbFilter className='-ms-0.5 me-2 h-4 w-4' />
                 Filters
-                <svg
-                  class='-me-0.5 ms-2 h-4 w-4'
-                  aria-hidden='true'
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='24'
-                  height='24'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                >
-                  <path
-                    stroke='currentColor'
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
-                    d='m19 9-7 7-7-7'
-                  />
-                </svg>
+                <TbChevronDown className='-me-0.5 ms-2 h-4 w-4' />
               </button>
               <button
                 id='sortDropdownButton1'
@@ -125,41 +85,9 @@ export default function Home () {
                 type='button'
                 class='flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 sm:w-auto'
               >
-                <svg
-                  class='-ms-0.5 me-2 h-4 w-4'
-                  aria-hidden='true'
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='24'
-                  height='24'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                >
-                  <path
-                    stroke='currentColor'
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
-                    d='M7 4v16M7 4l3 3M7 4 4 7m9-3h6l-6 6h6m-6.5 10 3.5-7 3.5 7M14 18h4'
-                  />
-                </svg>
+                <TbSortAscendingShapes className='-ms-0.5 me-2 h-4 w-4' />
                 Sort
-                <svg
-                  class='-me-0.5 ms-2 h-4 w-4'
-                  aria-hidden='true'
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='24'
-                  height='24'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                >
-                  <path
-                    stroke='currentColor'
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
-                    d='m19 9-7 7-7-7'
-                  />
-                </svg>
+                <TbChevronDown className='-me-0.5 ms-2 h-4 w-4' />
               </button>
               <div
                 id='dropdownSort1'
@@ -200,30 +128,32 @@ export default function Home () {
                       {(() => {
                         if (item.status === 'Lost') {
                           return (
-                            <span class='uppercase me-2 rounded bg-red-100 px-2.5 py-0.5 text-xs font-bold text-red-800'>
+                            <span class='uppercase me-2 rounded bg-red-200 px-2.5 py-0.5 text-xs font-bold text-red-800'>
                               {item.status}
                             </span>
                           )
                         } else if (item.status === 'Found') {
                           return (
-                            <span class='uppercase me-2 rounded bg-green-100 px-2.5 py-0.5 text-xs font-bold text-green-800'>
+                            <span class='uppercase me-2 rounded bg-lime-200 px-2.5 py-0.5 text-xs font-bold text-lime-800'>
                               {item.status}
                             </span>
                           )
                         } else {
                           return (
-                            <span class='uppercase me-2 rounded bg-blue-100 px-2.5 py-0.5 text-xs font-bold text-blue-800'>
+                            <span class='uppercase me-2 rounded bg-primary-200 px-2.5 py-0.5 text-xs font-bold text-primary-800'>
                               {item.status}
                             </span>
                           )
                         }
                       })()}
                       <div class='flex items-center justify-end gap-1'>
-                        <span className='text-gray-500'>S/ {item.reward}</span>
+                        <span className='text-gray-500'><TbReportMoney /></span>
+                        <span className='text-gray-500' title='Reward'>{item.reward}</span>
                         <button
                           type='button'
                           data-tooltip-target='tooltip-add-to-favorites'
                           class='rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900'
+                          title='Add to Bookmark'
                         >
                           <span class='sr-only'> Add to Bookmark </span>
                           <TbBookmark className='h-5 w-5' />
@@ -234,30 +164,31 @@ export default function Home () {
                       href='#'
                       class='text-lg font-semibold leading-tight text-gray-900 hover:underline'
                     >
-                      {item.name} (Dog)
+                      <h3>{item.name} ({item.specie._path.segments[1]})</h3>
                     </a>
                     <p>{item.description}</p>
                     <div class='mt-2 flex items-center gap-2'>
                       <p class='text-sm font-medium text-gray-900'>
-                        Seen {item.dateLastSeen}
+                        Seen on {item.dateLastSeen}
                       </p>
-                      <p class='text-sm font-medium text-gray-500'>(45d ago)</p>
+                      <p class='text-sm font-medium text-gray-500'>(<TimeAgoFrom date={item.dateLastSeen} /> ago)</p>
                     </div>
-                    <ul class='mt-2 flex items-center gap-4'>
-                      <li class='flex items-center gap-2'>
+                    <ul class='mt-2 flex items-center gap-2'>
+                      <li>
                         <p class='text-sm font-small text-gray-500'>
-                          {item.areaLastSeen}, {item.nearestLandmark},{' '}
-                          {item.crossStreet}
+                          <b>{item.areaLastSeen}</b> · {item.nearestLandmark}, {item.crossStreet}
                         </p>
                       </li>
-                      <li>
-                        <button
+                      <li className='rounded-lg hover:bg-gray-100 p-2'>
+                        <a
                           href={`https://www.google.com/maps/search/${item.ddLat}+${item.ddLon}`}
-                          class='rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900'
+                          class='text-gray-500 hover:text-gray-900'
+                          title='Show un maps'
+                          target='_blank'
                         >
                           <span class='sr-only'> Localizar </span>
                           <TbMapSearch className='h-4 w-4' />
-                        </button>
+                        </a>
                       </li>
                     </ul>
                     <div class='mt-4 flex items-center justify-between gap-4'>
@@ -266,14 +197,14 @@ export default function Home () {
                       </p>
                       <button
                         type='button'
-                        class='inline-flex items-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300'
+                        class='w-full inline-flex justify-center items-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300'
                       >
                         <TbCirclePlus className='-ms-2 me-2 h-5 w-5' />
                         Details
                       </button>
                       <button
                         type='button'
-                        class='inline-flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100'
+                        class='w-full inline-flex justify-center items-center rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100'
                       >
                         <TbShare className='-ms-2 me-2 h-5 w-5' />
                         Share

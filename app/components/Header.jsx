@@ -1,17 +1,18 @@
 import Link from 'next/link'
 import React from 'react'
+import { TbMenu2 } from 'react-icons/tb'
 
 export default function Header() {
   return (
     <nav className='bg-white bg-opacity-75 backdrop-blur-md sticky w-full z-20 top-0 start-0 border-b border-gray-200'>
       <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
         <a href='/' className='flex items-center space-x-3 rtl:space-x-reverse'>
-          <img src='/petfinder.svg' className='h-12' alt='Flowbite Logo' />
+          <img src='/petfinder.svg' className='h-12' alt='Logo' />
         </a>
         <div className='flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse'>
           <button
             type='button'
-            className='text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center'
+            className='text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 text-center'
           >
             Report Pet
           </button>
@@ -23,21 +24,7 @@ export default function Header() {
             aria-expanded='false'
           >
             <span className='sr-only'>Open main menu</span>
-            <svg
-              className='w-5 h-5'
-              aria-hidden='true'
-              xmlns='http://www.w3.org/2000/svg'
-              fill='none'
-              viewBox='0 0 17 14'
-            >
-              <path
-                stroke='currentColor'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                d='M1 1h15M1 7h15M1 13h15'
-              />
-            </svg>
+            <TbMenu2 className='w-5 h-5' />
           </button>
         </div>
         <div
