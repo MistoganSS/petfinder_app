@@ -10,6 +10,7 @@ import {
   TbZoomMoney
 } from 'react-icons/tb'
 import { FaArrowRight } from 'react-icons/fa'
+import SearchPet from './components/SearchPet'
 
 export default function Home () {
   return (
@@ -19,7 +20,10 @@ export default function Home () {
           <PetForm />
         </div>
         <div className='flex-1 p-10'>
-          <img src='https://placedog.net/500' alt='' />
+          <img
+            src='https://pawmaw-images.s3.ap-southeast-1.amazonaws.com/Public/Static-image/home_banner_image_mobile.jpg'
+            alt=''
+          />
         </div>
       </section>
       <section className='flex flex-col gap-5 lg:flex-row justify-evenly items-center'>
@@ -291,174 +295,62 @@ export default function Home () {
         </div>
       </section>
 
-      <section className='lg:px-20 flex flex-col items-center gap-10'>
-        <h3 className='text-5xl font-bold max-w-screen-md text-center'>
-          Search for <span className='text-red-600'> Lost</span>/
-          <span className='text-primary-600'>Found</span> Pets In Your Local
-          Area
-        </h3>
-        <form className='w-full p-5 grid grid-cols-1 md:grid-cols-4 gap-5 place-items-center justify-items-center lg:text-center bg-primary-400/30 rounded-xl lg:rounded-full'>
-          <div className='w-full'>
-            <label
-              htmlFor='name'
-              className='block mb-2 text-lg font-bold text-gray-900'
-            >
-              Name
-            </label>
-            <div className='relative w-full'>
-              <div className='absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none'>
-                <svg
-                  className='w-4 h-4 text-gray-500'
-                  aria-hidden='true'
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 18 20'
-                >
-                  <path
-                    stroke='currentColor'
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
-                    d='M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2'
-                  />
-                </svg>
-              </div>
-              <input
-                type='text'
-                id='name'
-                name='name'
-                className='ps-8 bg-transparent border border-transparent text-green-900 placeholder-slate-500 text-sm rounded-lg focus:outline-none block w-full p-2.5'
-                placeholder='Type Pet Name'
-                required
-              />
-            </div>
-          </div>
-          <div className='w-full'>
-            <label
-              htmlFor=''
-              className='block mb-2 text-lg font-bold text-gray-900'
-            >
-              Select an option
-            </label>
-            <div className='relative w-full'>
-              <div className='absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none'>
-                <svg
-                  className='w-4 h-4 text-gray-500'
-                  aria-hidden='true'
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 18 20'
-                >
-                  <path
-                    stroke='currentColor'
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
-                    d='M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2'
-                  />
-                </svg>
-              </div>
-              <select className='ps-8 bg-transparent border border-none text-gray-900 text-sm appearance-none rounded-lg block w-full p-2.5 focus:outline-none'>
-                <option selected className='text-slate-500'>
-                  Choose a country
-                </option>
-                <option value='US'>United States</option>
-                <option value='CA'>Canada</option>
-                <option value='FR'>France</option>
-                <option value='DE'>Germany</option>
-              </select>
-            </div>
-          </div>
-          <div className='w-full'>
-            <label
-              htmlFor='location'
-              className='block mb-2 text-lg font-bold text-gray-900'
-            >
-              Location
-            </label>
-            <div className='relative w-full'>
-              <div className='absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none'>
-                <svg
-                  className='w-4 h-4 text-gray-500'
-                  aria-hidden='true'
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 18 20'
-                >
-                  <path
-                    stroke='currentColor'
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
-                    d='M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2'
-                  />
-                </svg>
-              </div>
-              <input
-                type='text'
-                id='location'
-                name='location'
-                className='ps-8 bg-transparent placeholder-slate-500 border-none text-gray-900 text-sm rounded-lg focus:outline-none block w-full p-2.5'
-                placeholder='Type Location'
-                required
-              />
-            </div>
-          </div>
-          <button
-            type='submit'
-            className='w-20 bg-primary-700 border-none font-bold text-white rounded-md py-4'
-          >
-            Find Pet
-          </button>
-        </form>
-      </section>
+      <SearchPet />
       <section className='w-full flex flex-col items-end'>
-        <div className='max-w-screen-lg'>
+        <div className='max-w-screen-lg mx-auto'>
           <h3 className='text-center text-5xl mb-5 font-bold'>
             Reunite With Your Pet Quickly! Learn How It Works
           </h3>
         </div>
-        <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
-          <div className=''>
+        <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20'>
+          <div className='flex flex-col gap-3'>
             <img
               src='https://www.pawmaw.com/assets/images/how-it-works/report-pet-image.svg'
               alt=''
             />
-            <div className=''>REPORT A PET</div>
-            <p className=''>
+            <div className='text-2xl font-bold text-center py-2 bg-red-600 text-white rounded-full'>
+              REPORT
+            </div>
+            <p className='text-center'>
               Tell us about your lost/found pet; by posting a shout-out on our
               website. By that, you will get concerned people in your
               neighborhoods right on the spot to help search for your pet.
             </p>
           </div>
-          <div className=''>
+          <div className='flex flex-col gap-3'>
             <img
               src='https://www.pawmaw.com/assets/images/how-it-works/report-pet-image.svg'
               alt=''
             />
-            <div className=''>REPORT A PET</div>
-            <p className=''>
-              Tell us about your lost/found pet; by posting a shout-out on our
-              website. By that, you will get concerned people in your
-              neighborhoods right on the spot to help search for your pet.
+            <div className='text-2xl font-bold text-center py-2 bg-secondary-600 text-white rounded-full'>
+              PROMOTE
+            </div>
+            <p className='text-center'>
+              PetFinder has a feature called PetFinder Alert - by activating the
+              alert, you can make your search effort highly effective and reach
+              thousands of people to the residents of the area where your pet
+              went missing.
             </p>
           </div>
-          <div className=''>
+          <div className='flex flex-col gap-3'>
             <img
               src='https://www.pawmaw.com/assets/images/how-it-works/report-pet-image.svg'
               alt=''
             />
-            <div className=''>REPORT A PET</div>
-            <p className=''>
-              Tell us about your lost/found pet; by posting a shout-out on our
-              website. By that, you will get concerned people in your
-              neighborhoods right on the spot to help search for your pet.
+            <div className='text-2xl font-bold text-center py-2 bg-primary-600 text-white rounded-full'>
+              REUNITED
+            </div>
+            <p className='text-center'>
+              We are known for what we do! Every day we help distressed pet
+              owners to find their lost, scared, and often hungry pets. And it
+              has always been an atmosphere of cheers and happiness, every time
+              we reunited with their beloved one.
             </p>
           </div>
         </div>
       </section>
       <section className='bg-primary-600 rounded-3xl'>
-        <div className='bg-white flex flex-col md:flex-row rounded-3xl'>
+        <div className='bg-white flex flex-col md:flex-row rounded-full'>
           <img
             className='flex-1'
             src='https://pawmaw-images.s3.ap-southeast-1.amazonaws.com/Public/Static-image/dog-image-01.webp'
@@ -470,8 +362,8 @@ export default function Home () {
             </h3>
             <p className='text-lg md:text-2xl'>
               Over 10 million dogs and cats are lost or stolen every year. You
-              can report your missing pets with PawMaw. We can notify thousands
-              nearby within a minute.
+              can report your missing pets with PetFinder. We can notify
+              thousands nearby within a minute.
             </p>
           </div>
         </div>

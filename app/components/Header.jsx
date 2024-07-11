@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 export default function Header () {
@@ -54,12 +55,12 @@ export default function Header () {
               </a>
             </li>
             <li>
-              <a
-                href='#'
+              <Link
+                href='/how-it-works'
                 className='block text-black py-2 px-3  rounded md:bg-transparent md:text-primary-600 md:p-0'
               >
                 How it Works
-              </a>
+              </Link>
             </li>
             <li>
               <a
