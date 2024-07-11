@@ -56,7 +56,7 @@ export default function Home () {
             neighbors.
           </p>
         </div>
-        <div className='py-5 grid grid-cols-2 lg:grid-cols-5 gap-3'>
+        <div className='py-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3'>
           {animalList.map(item => {
             return (
               <article key={item.id} className='bg-red-600 rounded-lg'>
@@ -80,7 +80,7 @@ export default function Home () {
           Search for <span className='text-red-600'> Lost/Found</span> Pets In
           Your Local Area
         </h3>
-        <form className='w-full p-5 grid grid-cols-1 lg:grid-cols-4 gap-5 place-items-center justify-items-center lg:text-center bg-slate-400 rounded-xl lg:rounded-full'>
+        <form className='w-full p-5 grid grid-cols-1 md:grid-cols-4 gap-5 place-items-center justify-items-center lg:text-center bg-slate-400 rounded-xl lg:rounded-full'>
           <div className='w-full'>
             <label
               htmlFor='name'
@@ -198,7 +198,7 @@ export default function Home () {
             Reunite With Your Pet Quickly! Learn How It Works
           </h3>
         </div>
-        <div className='w-full grid grid-cols-1 lg:grid-cols-3 gap-5'>
+        <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
           <div className=''>
             <img
               src='https://www.pawmaw.com/assets/images/how-it-works/report-pet-image.svg'
@@ -235,6 +235,28 @@ export default function Home () {
               neighborhoods right on the spot to help search for your pet.
             </p>
           </div>
+        </div>
+      </section>
+      <section className='bg-red-600 rounded-3xl'>
+        <div className='bg-white flex flex-col md:flex-row rounded-3xl'>
+          <img
+            className='flex-1'
+            src='https://pawmaw-images.s3.ap-southeast-1.amazonaws.com/Public/Static-image/dog-image-01.webp'
+            alt=''
+          />
+          <div className='flex-1 text-left md:text-right p-5 md:p-10'>
+            <h3 className='text-4xl md:text-6xl font-bold mb-5'>
+              Get Your Pet Back Home
+            </h3>
+            <p className='text-lg md:text-2xl'>
+              Over 10 million dogs and cats are lost or stolen every year. You
+              can report your missing pets with PawMaw. We can notify thousands
+              nearby within a minute.
+            </p>
+          </div>
+        </div>
+        <div className='rounded-b-xl text-xl text-center text-white font-bold py-5'>
+          Report Lost PeT
         </div>
       </section>
     </main>
