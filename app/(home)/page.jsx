@@ -414,7 +414,7 @@ export default function Home () {
       </section>
       <section className='w-full flex flex-col items-end'>
         <div className='max-w-screen-lg'>
-          <h3 className='text-right text-5xl mb-5 font-bold'>
+          <h3 className='text-center text-5xl mb-5 font-bold'>
             Reunite With Your Pet Quickly! Learn How It Works
           </h3>
         </div>
@@ -464,7 +464,7 @@ export default function Home () {
             src='https://pawmaw-images.s3.ap-southeast-1.amazonaws.com/Public/Static-image/dog-image-01.webp'
             alt=''
           />
-          <div className='flex-1 text-left md:text-right p-5 md:p-10'>
+          <div className='flex-1 text-center p-5 md:p-10'>
             <h3 className='text-4xl md:text-6xl font-bold mb-5'>
               Get Your Pet Back Home
             </h3>

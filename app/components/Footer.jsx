@@ -1,10 +1,11 @@
 import React from 'react'
+import { FaFacebook, FaPinterest, FaTwitter, FaYoutube } from 'react-icons/fa'
 
 export default function Footer () {
   return (
     <div>
       <img src='/footer_img.svg' alt='' />
-      <div className='bg-[#B81F3B] text-white p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5 md:gap-10'>
+      <div className='bg-primary-800 text-white p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5 md:gap-10'>
         <div className='md:col-span-2 '>
           <h3 className='text-2xl font-bold mb-5'>PetFind</h3>
           <p className='text-[#d8d8d8] text-lg mb-5'>
@@ -52,12 +53,15 @@ export default function Footer () {
               </div>
             </form>
           </div>
-          <div className='px-5'>
-            <img src='/icon-facebook.svg' alt='' />
+          <div className='px-5 flex gap-3 justify-center items-center'>
+            <FaFacebook />
+            <FaTwitter />
+            <FaPinterest />
+            <FaYoutube />
           </div>
         </div>
       </div>
-      <div className='bg-[#DB1D41] text-center py-5 px-2 text-white'>
+      <div className='bg-primary-700 text-center py-5 px-2 text-white'>
         Terms of our Service | Copyright © 2024 PetFind
       </div>
     </div>
