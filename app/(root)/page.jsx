@@ -12,39 +12,46 @@ import {
   TbSortAscendingShapes,
   TbChevronDown
 } from 'react-icons/tb'
-import { FaArrowRight } from 'react-icons/fa'
+import { FaListCheck, FaPaperPlane, FaPeopleGroup } from 'react-icons/fa6'
+import { IoCreateSharp } from 'react-icons/io5'
 import SearchPet from './components/SearchPet'
+import HowItWorksComponent from './components/HowItWorksComponent'
+import PetBackHome from './components/PetBackHome'
 
-export default function Home() {
+export default function Home () {
   return (
-    <main className='lg:p-10 p-5 pt-15 flex flex-col gap-20'>
+    <div className='lg:p-10 p-5 pt-15 flex flex-col gap-20'>
       <section className='flex flex-col lg:flex-row justify-between items-center gap-5 p-5'>
         <div className='flex-1'>
           <PetForm />
         </div>
         <div className='flex-1 p-10'>
-          <img src="/img/home_banner_image_mobile.jpg" alt="Lost pets banner" />
+          <img src='/img/home_banner_image_mobile.jpg' alt='Lost pets banner' />
         </div>
       </section>
-      <section className='flex flex-col gap-5 lg:flex-row justify-evenly items-center'>
-        {/* <div className='flex justify-center items-center w-96 h-96 rounded-full bg-red-700 absolute -start-10 top-14'>
-          <div className='w-80 h-80 rounded-full bg-blue-600'></div>
-        </div> */}
-        <div className='relative border-gray-800 bg-gray-800 border-[14px] rounded-xl h-[475px] w-[257px] shadow-xl'>
-          <div className='w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute'></div>
-          <div className='h-[32px] w-[3px] bg-gray-800 absolute -start-[17px] top-[72px] rounded-s-lg'></div>
-          <div className='h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg'></div>
-          <div className='h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg'></div>
-          <div className='h-[64px] w-[3px] bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg'></div>
-          <div className='rounded-xl overflow-hidden w-[230px] h-[450px] bg-white'>
-            <img src='/img/mockup-1-light.png' className='w-[230px] h-[450px]' alt=''/>
+      <section className='flex flex-col md:flex-row justify-center items-center'>
+        <div className='bg-secondary-100 rounded-xl p-5'>
+          <div className='bg-white p-5 rounded-xl'>
+            <div className='bg-primary-500 p-2 rounded-xl'>
+              <img src='/cell_pet.svg' alt='Cell Info PetFinder' />
+            </div>
           </div>
         </div>
-        <div className='text-xl flex flex-col gap-3 font-bold p-5'>
-          <p>Create Free Listing</p>
-          <p>Free Alert Instantly</p>
-          <p>Create Free Lost/Found Flyer</p>
-          <p>Reach More People In Your Local Area</p>
+        <div className='bg-secondary-100 rounded-t-full md:rounded-t-none md:rounded-tr-full text-xl md:text-2xl flex flex-col gap-5 font-bold text-gray-700 p-5'>
+          <p className='flex gap-2 items-center justify-center md:justify-start'>
+            <FaListCheck className='fill-secondary-700' /> Create Free Listing
+          </p>
+          <p className='flex gap-2 items-center justify-center md:justify-start'>
+            <FaPaperPlane className='fill-secondary-700' /> Free Alert Instantly
+          </p>
+          <p className='flex gap-2 items-center justify-center md:justify-start'>
+            <IoCreateSharp className='fill-secondary-700' /> Create Free
+            Lost/Found Flyer
+          </p>
+          <p className='flex gap-2 items-center justify-center md:justify-start'>
+            <FaPeopleGroup className='fill-secondary-700' /> Reach More People
+            In Your Local Area
+          </p>
         </div>
       </section>
 
@@ -147,8 +154,12 @@ export default function Home() {
                         }
                       })()}
                       <div class='flex items-center justify-end gap-1'>
-                        <span className='text-gray-500'><TbReportMoney /></span>
-                        <span className='text-gray-500' title='Reward'>{item.reward}</span>
+                        <span className='text-gray-500'>
+                          <TbReportMoney />
+                        </span>
+                        <span className='text-gray-500' title='Reward'>
+                          {item.reward}
+                        </span>
                         <button
                           type='button'
                           data-tooltip-target='tooltip-add-to-favorites'
@@ -164,19 +175,24 @@ export default function Home() {
                       href='#'
                       class='text-lg font-semibold leading-tight text-gray-900 hover:underline'
                     >
-                      <h3>{item.name} ({item.specie._path.segments[1]})</h3>
+                      <h3>
+                        {item.name} ({item.specie._path.segments[1]})
+                      </h3>
                     </a>
                     <p>{item.description}</p>
                     <div class='mt-2 flex items-center gap-2'>
                       <p class='text-sm font-medium text-gray-900'>
                         Seen on {item.dateLastSeen}
                       </p>
-                      <p class='text-sm font-medium text-gray-500'>(<TimeAgoFrom date={item.dateLastSeen} /> ago)</p>
+                      <p class='text-sm font-medium text-gray-500'>
+                        (<TimeAgoFrom date={item.dateLastSeen} /> ago)
+                      </p>
                     </div>
                     <ul class='mt-2 flex items-center gap-2'>
                       <li>
                         <p class='text-sm font-small text-gray-500'>
-                          <b>{item.areaLastSeen}</b> · {item.nearestLandmark}, {item.crossStreet}
+                          <b>{item.areaLastSeen}</b> · {item.nearestLandmark},{' '}
+                          {item.crossStreet}
                         </p>
                       </li>
                       <li className='rounded-lg hover:bg-gray-100 p-2'>
@@ -225,84 +241,16 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <SearchPet />
-      <section className='w-full flex flex-col items-end'>
-        <div className='max-w-screen-lg mx-auto'>
-          <h3 className='text-center text-5xl mb-5 font-bold'>
-            Reunite With Your Pet Quickly! Learn How It Works
-          </h3>
-        </div>
-        <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20'>
-          <div className='flex flex-col gap-3'>
-            <img
-              src='https://www.pawmaw.com/assets/images/how-it-works/report-pet-image.svg'
-              alt=''
-            />
-            <div className='text-2xl font-bold text-center py-2 bg-red-600 text-white rounded-full'>
-              REPORT
-            </div>
-            <p className='text-center'>
-              Tell us about your lost/found pet; by posting a shout-out on our
-              website. By that, you will get concerned people in your
-              neighborhoods right on the spot to help search for your pet.
-            </p>
-          </div>
-          <div className='flex flex-col gap-3'>
-            <img
-              src='https://www.pawmaw.com/assets/images/how-it-works/report-pet-image.svg'
-              alt=''
-            />
-            <div className='text-2xl font-bold text-center py-2 bg-secondary-600 text-white rounded-full'>
-              PROMOTE
-            </div>
-            <p className='text-center'>
-              PetFinder has a feature called PetFinder Alert - by activating the
-              alert, you can make your search effort highly effective and reach
-              thousands of people to the residents of the area where your pet
-              went missing.
-            </p>
-          </div>
-          <div className='flex flex-col gap-3'>
-            <img
-              src='https://www.pawmaw.com/assets/images/how-it-works/report-pet-image.svg'
-              alt=''
-            />
-            <div className='text-2xl font-bold text-center py-2 bg-primary-600 text-white rounded-full'>
-              REUNITED
-            </div>
-            <p className='text-center'>
-              We are known for what we do! Every day we help distressed pet
-              owners to find their lost, scared, and often hungry pets. And it
-              has always been an atmosphere of cheers and happiness, every time
-              we reunited with their beloved one.
-            </p>
-          </div>
-        </div>
+      <section className='lg:px-20 flex flex-col items-center gap-10'>
+        <h3 className='text-5xl font-bold max-w-screen-md text-center'>
+          Search for <span className='text-red-600'> Lost</span>/
+          <span className='text-primary-600'>Found</span> Pets in your local
+          area
+        </h3>
+        <SearchPet />
       </section>
-      <section className='bg-primary-600 rounded-3xl'>
-        <div className='bg-white flex flex-col md:flex-row rounded-full'>
-          <img
-            className='flex-1'
-            src='https://pawmaw-images.s3.ap-southeast-1.amazonaws.com/Public/Static-image/dog-image-01.webp'
-            alt=''
-          />
-          <div className='flex-1 text-center p-5 md:p-10'>
-            <h3 className='text-4xl md:text-6xl font-bold mb-5'>
-              Get Your Pet Back Home
-            </h3>
-            <p className='text-lg md:text-2xl'>
-              Over 10 million dogs and cats are lost or stolen every year. You
-              can report your missing pets with PetFinder. We can notify
-              thousands nearby within a minute.
-            </p>
-          </div>
-        </div>
-        <div className='flex justify-center items-center gap-2 rounded-b-xl text-xl text-center text-white font-bold py-5'>
-          Report Lost PeT
-          <FaArrowRight />
-        </div>
-      </section>
-    </main>
+      <HowItWorksComponent />
+      <PetBackHome />
+    </div>
   )
 }

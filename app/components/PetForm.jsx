@@ -16,7 +16,7 @@ export default function PetForm () {
   return (
     <>
       <div className=''>
-        <h1 className='text-6xl leading-relaxed'>
+        <h1 className='text-6xl leading-relaxed font-bold text-gray-700'>
           {lostPet ? (
             <>
               We can help find your{' '}
@@ -25,8 +25,8 @@ export default function PetForm () {
           ) : (
             <>
               We help reunite{' '}
-              <span className='text-primary-600 font-bold'> Found Pet</span> with
-              their owners.
+              <span className='text-primary-600 font-bold'> Found Pet</span>{' '}
+              with their owners.
             </>
           )}
         </h1>
@@ -148,7 +148,9 @@ export default function PetForm () {
             </div>
             <button
               type='submit'
-              className='w-full bg-[#df1d42] opacity-35 rounded-b-xl py-4'
+              className={`w-full ${
+                lostPet ? 'bg-[#df1d42]' : 'bg-primary-600'
+              } rounded-b-xl py-4 text-white font-bold`}
             >
               Report {lostPet ? 'Lost' : 'Found'} Pet
             </button>

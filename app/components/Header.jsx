@@ -1,8 +1,12 @@
+'use client'
 import Link from 'next/link'
-import React from 'react'
+import { usePathname } from 'next/navigation'
+import React, { useState } from 'react'
 import { TbMenu2 } from 'react-icons/tb'
 
-export default function Header() {
+export default function Header () {
+  const [showHeader, setShowHeader] = useState(false)
+  const pathname = usePathname()
   return (
     <nav className='bg-white bg-opacity-75 backdrop-blur-md sticky w-full z-20 top-0 start-0 border-b border-gray-200'>
       <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
@@ -17,6 +21,7 @@ export default function Header() {
             Report Pet
           </button>
           <button
+            onClick={() => setShowHeader(!showHeader)}
             data-collapse-toggle='navbar-sticky'
             type='button'
             className='inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200'
@@ -28,14 +33,20 @@ export default function Header() {
           </button>
         </div>
         <div
-          className='items-center justify-between hidden w-full md:flex md:w-auto md:order-1'
+          className={`${
+            showHeader ? '' : 'hidden'
+          } items-center justify-between  w-full md:flex md:w-auto md:order-1`}
           id='navbar-sticky'
         >
           <ul className='flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0'>
             <li>
               <a
                 href='#'
-                className='block text-white py-2 px-3 bg-primary-700 rounded md:bg-transparent md:text-primary-600 md:p-0'
+                className={`${
+                  pathname === '/catalog'
+                    ? 'text-white bg-primary-700 md:text-primary-600'
+                    : ''
+                } block text-black py-2 px-3  rounded md:bg-transparent md:p-0`}
                 aria-current='page'
               >
                 Lost/Found
@@ -44,7 +55,11 @@ export default function Header() {
             <li>
               <Link
                 href='/how-it-works'
-                className='block text-black py-2 px-3  rounded md:bg-transparent md:text-primary-600 md:p-0'
+                className={`${
+                  pathname === '/how-it-works'
+                    ? 'text-white bg-primary-700 md:text-primary-600'
+                    : ''
+                } block text-black py-2 px-3  rounded md:bg-transparent md:p-0`}
               >
                 How it Works
               </Link>
@@ -52,7 +67,11 @@ export default function Header() {
             <li>
               <a
                 href='#'
-                className='block text-black py-2 px-3 rounded md:bg-transparent md:text-primary-600 md:p-0'
+                className={`${
+                  pathname === '/login'
+                    ? 'text-white bg-primary-700 md:text-primary-600'
+                    : ''
+                } block text-black py-2 px-3  rounded md:bg-transparent md:p-0`}
               >
                 Join/Login
               </a>
