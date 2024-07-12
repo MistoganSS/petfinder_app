@@ -18,12 +18,12 @@ import SearchPet from './components/SearchPet'
 export default function Home() {
   return (
     <main className='lg:p-10 p-5 pt-15 flex flex-col gap-20'>
-      <section className='flex flex-col lg:flex-row justify-between items-center gap-5 p-5'>
+      <section className='flex flex-col lg:flex-row justify-between items-center gap-14 p-5'>
         <div className='flex-1'>
           <PetForm />
         </div>
-        <div className='flex-1 p-10'>
-          <img src="/img/home_banner_image_mobile.jpg" alt="Lost pets banner" />
+        <div className='flex-1'>
+          <img src="/img/lost-pets-banner.webp" alt="Lost pets banner" />
         </div>
       </section>
       <section className='flex flex-col gap-5 lg:flex-row justify-evenly items-center'>
