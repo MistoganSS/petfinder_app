@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { TbMenu2 } from 'react-icons/tb'
+import MetaEntity from './MetaEntity'
 
 export default function Header() {
   return (
@@ -35,7 +36,7 @@ export default function Header() {
             <li>
               <a
                 href='#'
-                className='block text-white py-2 px-3 bg-primary-700 rounded md:bg-transparent md:text-primary-600 md:p-0'
+                className='block text-white py-2 px-3 bg-primary-700 rounded md:bg-transparent md:text-primary-800 md:p-0'
                 aria-current='page'
               >
                 Lost/Found
@@ -44,7 +45,7 @@ export default function Header() {
             <li>
               <Link
                 href='/how-it-works'
-                className='block text-black py-2 px-3  rounded md:bg-transparent md:text-primary-600 md:p-0'
+                className='block text-black py-2 px-3  rounded md:bg-transparent md:text-primary-800 md:p-0'
               >
                 How it Works
               </Link>
@@ -52,7 +53,7 @@ export default function Header() {
             <li>
               <a
                 href='#'
-                className='block text-black py-2 px-3 rounded md:bg-transparent md:text-primary-600 md:p-0'
+                className='block text-black py-2 px-3 rounded md:bg-transparent md:text-primary-800 md:p-0'
               >
                 Join/Login
               </a>

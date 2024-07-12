@@ -2,6 +2,7 @@ import Image from 'next/image'
 import PetForm from '../components/PetForm'
 import { animalList } from '../mocks/animalsList'
 import TimeAgoFrom from './components/TimeAgoFrom'
+import MetaEntity from '../components/MetaEntity'
 import {
   TbShare,
   TbCirclePlus,
@@ -10,14 +11,14 @@ import {
   TbReportMoney,
   TbFilter,
   TbSortAscendingShapes,
-  TbChevronDown
+  TbChevronDown,
+  TbArrowRight
 } from 'react-icons/tb'
-import { FaArrowRight } from 'react-icons/fa'
 import SearchPet from './components/SearchPet'
 
 export default function Home() {
   return (
-    <main className='lg:p-10 p-5 pt-15 flex flex-col gap-20'>
+    <main className='lg:p-10 p-5 pt-15 flex flex-col gap-36'>
       <section className='flex flex-col lg:flex-row justify-between items-center gap-14 p-5'>
         <div className='flex-1'>
           <PetForm />
@@ -37,7 +38,7 @@ export default function Home() {
           <div className='h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg'></div>
           <div className='h-[64px] w-[3px] bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg'></div>
           <div className='rounded-xl overflow-hidden w-[230px] h-[450px] bg-white'>
-            <img src='/img/mockup-1-light.png' className='w-[230px] h-[450px]' alt=''/>
+            <img src='/img/mockup-1-light.png' className='w-[230px] h-[450px]' alt='' />
           </div>
         </div>
         <div className='text-xl flex flex-col gap-3 font-bold p-5'>
@@ -51,13 +52,12 @@ export default function Home() {
       <section class='bg-gray-50 py-8 antialiased md:py-12'>
         <div className='max-w-screen-lg mx-auto text-center'>
           <h2 className=' text-5xl mb-5 font-bold'>
-            When you report a lost/found pet, your post will appear here as
-            featured post
+            When you report a lost/found pet, your post will appear here as featured post
           </h2>
           <p className='text-2xl text-slate-500'>
             Have lost or found pets in your area? We have featured posts
-            available on our website to get more attention from visitors. Over
-            85% success rate finding your lost pets by reaching 1000s of
+            available on our website to get more attention from visitors.
+            Over <span className='underline underline-offset-3 decoration-4 decoration-green-400'>85% success</span> rate finding your lost pets by reaching 1000s of
             neighbors.
           </p>
         </div>
@@ -134,9 +134,15 @@ export default function Home() {
                           )
                         } else if (item.status === 'Found') {
                           return (
-                            <span class='uppercase me-2 rounded bg-lime-200 px-2.5 py-0.5 text-xs font-bold text-lime-800'>
-                              {item.status}
-                            </span>
+                            <div className='flex items-center gap-1'>
+                              <span class='uppercase me-2 rounded bg-lime-200 px-2.5 py-0.5 text-xs font-bold text-lime-800'>
+                                {item.status}
+                              </span>
+                              <span class="relative flex h-3 w-3">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-500 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-lime-500"></span>
+                              </span>
+                            </div>
                           )
                         } else {
                           return (
@@ -226,7 +232,6 @@ export default function Home() {
         </div>
       </section>
 
-      <SearchPet />
       <section className='w-full flex flex-col items-end'>
         <div className='max-w-screen-lg mx-auto'>
           <h3 className='text-center text-5xl mb-5 font-bold'>
@@ -280,23 +285,23 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className='bg-primary-600 rounded-3xl'>
-        <div className='bg-primary-100 flex flex-col md:flex-row rounded-3xl'>
+      <section className='bg-red-700 rounded-3xl'>
+        <div className='bg-gradient-to-tr from-emerald-700 to-teal-50 flex flex-col md:flex-row rounded-3xl'>
           <img className='flex-1 rounded-3xl' src='/img/dog-image-01.png' alt='Dog' />
           <div className='flex flex-col text-center md:text-right justify-center p-5 md:p-10'>
-            <h3 className='text-3xl md:text-5xl font-bold mb-5'>
-              Get Your Pet Back Home
+            <h3 className='text-4xl md:text-5xl font-extrabold mb-5 text-emerald-950'>
+              Get your pet back home
             </h3>
             <p className='text-lg md:text-2xl'>
-              Over <b>10 million</b> dogs and cats are lost or stolen every year. You
-              can report your missing pets with PetFinder. We can notify
+              Over <span className='underline underline-offset-3 decoration-8 decoration-red-500'>10 million</span> dogs and cats are lost or stolen every year. You
+              can report your missing pets with <MetaEntity metaKey="name" />. We can notify
               thousands nearby within a minute.
             </p>
           </div>
         </div>
-        <div className='flex justify-center items-center gap-2 rounded-b-xl text-xl text-center text-white font-bold py-5 hover:gap-4'>
+        <div className='flex gap-5 justify-center items-center rounded-b-xl text-xl text-center text-white font-bold py-5'>
           Report Lost Pet
-          <FaArrowRight />
+          <TbArrowRight className='animate-ping ' />
         </div>
       </section>
     </main>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { TbBrandFacebookFilled, TbBrandInstagram, TbBrandX, TbBrandYoutubeFilled } from 'react-icons/tb'
+import MetaEntity from './MetaEntity'
 
 export default function Footer() {
   return (
@@ -9,7 +10,7 @@ export default function Footer() {
         <div className='md:col-span-2 '>
           <img src='/petfinder.svg' className='h-10 mb-4 invert brightness-0' alt='PetFind' />
           <p className='text-orange-200 text-lg mb-5'>
-            PetFind is actively helping to search for your lost pets in your
+            <MetaEntity metaKey="name" /> is actively helping to search for your lost pets in your
             local area. Report your lost/found pets here and send a free alert
             instantly.
           </p>
@@ -26,8 +27,9 @@ export default function Footer() {
         </div>
         <div className=''>
           <h3 className='text-xl font-bold underline mb-5'>Get In Touch</h3>
-          <p>info@petfind.com</p>
-          <p className=''>sales@petfind.com</p>
+          <p><MetaEntity metaKey="emails" subKey="contact" /></p>
+          <p><MetaEntity metaKey="emails" subKey="report" /></p>
+          <p><MetaEntity metaKey="address" /></p>
         </div>
         <div className='md:col-span-2'>
           <h3 className='text-xl font-bold underline mb-5'>
@@ -53,15 +55,16 @@ export default function Footer() {
             </form>
           </div>
           <div className='px-5 flex gap-6 justify-center items-center'>
-            <a href="#"><TbBrandFacebookFilled className='h-6 w-6' /></a>
-            <a href="#"><TbBrandX className='h-6 w-6' /></a>
-            <a href="#"><TbBrandInstagram className='h-6 w-6' /></a>
-            <a href="#"><TbBrandYoutubeFilled className='h-6 w-6' /></a>
+
+            <a href={<MetaEntity metaKey="social" subKey="facebook" />}><TbBrandFacebookFilled className='h-6 w-6' /></a>
+            <a href={<MetaEntity metaKey="social" subKey="x" />}><TbBrandX className='h-6 w-6' /></a>
+            <a href={<MetaEntity metaKey="social" subKey="instagram" />}><TbBrandInstagram className='h-6 w-6' /></a>
+            <a href={<MetaEntity metaKey="social" subKey="youtube" />}><TbBrandYoutubeFilled className='h-6 w-6' /></a>
           </div>
         </div>
       </div>
       <div className='bg-primary-800 text-center py-2 px-2 text-white'>
-        Terms of our Service · © 2024 PetFind
+        Terms of our Service · © 2024 {<MetaEntity metaKey="name" />}
       </div>
     </div>
   )
