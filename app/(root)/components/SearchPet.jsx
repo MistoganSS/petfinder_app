@@ -9,7 +9,6 @@ const getSpecies = async () => {
 }
 export default async function SearchPet () {
   const species = await getSpecies()
-  console.log({ species })
   return (
     <form className='w-full p-5 grid grid-cols-1 md:grid-cols-4 gap-5 place-items-center justify-items-center lg:text-center bg-primary-400/30 rounded-xl lg:rounded-full'>
       <div className='w-full'>

@@ -4,12 +4,16 @@ import { usePathname } from 'next/navigation'
 import React, { useState } from 'react'
 import { TbMenu2 } from 'react-icons/tb'
 
-export default function Header () {
+export default function Header (props) {
   const [showHeader, setShowHeader] = useState(false)
   const pathname = usePathname()
   return (
     <nav className='bg-white bg-opacity-75 backdrop-blur-md sticky w-full z-20 top-0 start-0 border-b border-gray-200'>
-      <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
+      <div
+        className={`${
+          !props.dashboard ? 'max-w-screen-2xl p-4' : 'px-2 py-4'
+        } flex flex-wrap items-center justify-between mx-auto`}
+      >
         <a href='/' className='flex items-center space-x-3 rtl:space-x-reverse'>
           <img src='/petfinder.svg' className='h-12' alt='Logo' />
         </a>
@@ -40,7 +44,20 @@ export default function Header () {
         >
           <ul className='flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0'>
             <li>
-              <a
+              <Link
+                href='/'
+                className={`${
+                  pathname === '/'
+                    ? 'text-white bg-primary-700 md:text-primary-600'
+                    : ''
+                } block text-black py-2 px-3  rounded md:bg-transparent md:p-0`}
+                aria-current='page'
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
                 href='#'
                 className={`${
                   pathname === '/catalog'
@@ -50,7 +67,7 @@ export default function Header () {
                 aria-current='page'
               >
                 Lost/Found
-              </a>
+              </Link>
             </li>
             <li>
               <Link
@@ -65,16 +82,16 @@ export default function Header () {
               </Link>
             </li>
             <li>
-              <a
-                href='#'
+              <Link
+                href='/login'
                 className={`${
                   pathname === '/login'
                     ? 'text-white bg-primary-700 md:text-primary-600'
                     : ''
                 } block text-black py-2 px-3  rounded md:bg-transparent md:p-0`}
               >
-                Join/Login
-              </a>
+                How it Works
+              </Link>
             </li>
           </ul>
         </div>

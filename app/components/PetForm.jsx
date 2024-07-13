@@ -3,12 +3,12 @@ import React, { useState } from 'react'
 
 export default function PetForm () {
   const [lostPet, setLostPet] = useState(true)
-  const classNameInput = `block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 ${
+  const classNameInput = `block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none ${
     lostPet
       ? 'dark:focus:border-[#df1d42] focus:border-[#df1d42]'
       : 'dark:focus:border-[#e0a900] focus:border-[#e0a900]'
   }  focus:outline-none focus:ring-0  peer`
-  const classNameLabel = `peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto ${
+  const classNameLabel = `peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto ${
     lostPet
       ? 'peer-focus:text-[#df1d42] peer-focus:dark:text-[#df1d42]'
       : 'peer-focus:text-[#e0a900] peer-focus:dark:text-[#e0a900]'
@@ -16,27 +16,33 @@ export default function PetForm () {
   return (
     <>
       <div className=''>
-        <h1 className='text-6xl leading-relaxed font-bold text-gray-700'>
+        <h1 className='mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-700 md:text-5xl lg:text-6xl'>
           {lostPet ? (
             <>
               We can help find your{' '}
-              <span className='text-red-600 font-bold'> Lost Pet. </span>
+              <span className='text-transparent bg-clip-text bg-gradient-to-l to-red-600 from-red-400'>
+                Lost Pet
+              </span>{' '}
+              in this community.
             </>
           ) : (
             <>
               We help reunite{' '}
-              <span className='text-primary-600 font-bold'> Found Pet</span>{' '}
+              <span className='text-transparent bg-clip-text bg-gradient-to-l to-primary-800 from-primary-500'>
+                {' '}
+                Found Pet
+              </span>{' '}
               with their owners.
             </>
           )}
         </h1>
-        <p className=''>
+        <p className='text-lg font-normal text-gray-500 lg:text-xl'>
           It`s super simple and takes only minutes. Just add your pet`s info,
           picture, and contact information.
         </p>
       </div>
       <div className='p-5'>
-        <div className='flex gap-5 text-xl py-7 font-bold text-slate-300'>
+        <div className='flex gap-5 text-xl py-7 font-bold text-gray-500'>
           <button
             onClick={() => setLostPet(true)}
             className={`p-3 ${lostPet ? 'text-red-600' : ''}`}

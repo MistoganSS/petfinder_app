@@ -1,12 +1,12 @@
 import React from 'react'
 import {
+  TbBrandFacebookFilled,
   TbBrandInstagram,
   TbBrandX,
   TbBrandYoutubeFilled
 } from 'react-icons/tb'
-import { MdOutlineMail } from 'react-icons/md'
-import { FaFacebook } from 'react-icons/fa'
 import Link from 'next/link'
+import MetaEntity from './MetaEntity'
 
 export default function Footer () {
   return (
@@ -20,9 +20,9 @@ export default function Footer () {
             alt='PetFind'
           />
           <p className='text-orange-200 text-lg mb-5'>
-            PetFinder is actively helping to search for your lost pets in your
-            local area. Report your lost/found pets here and send a free alert
-            instantly.
+            <MetaEntity metaKey='name' /> is actively helping to search for your
+            lost pets in your local area. Report your lost/found pets here and
+            send a free alert instantly.
           </p>
         </div>
         <div className=''>
@@ -41,11 +41,15 @@ export default function Footer () {
         </div>
         <div className=''>
           <h3 className='text-xl font-bold underline mb-5'>Get In Touch</h3>
-          <p className='flex items-center gap-1'>
-            <MdOutlineMail /> info@petfinder.com
+
+          <p>
+            <MetaEntity metaKey='emails' subKey='contact' />
           </p>
-          <p className='flex items-center gap-1'>
-            <MdOutlineMail /> sales@petfinder.com
+          <p>
+            <MetaEntity metaKey='emails' subKey='report' />
+          </p>
+          <p>
+            <MetaEntity metaKey='address' />
           </p>
         </div>
         <div className='md:col-span-2'>
@@ -72,23 +76,23 @@ export default function Footer () {
             </form>
           </div>
           <div className='px-5 flex gap-6 justify-center items-center'>
-            <a href='#'>
-              <FaFacebook className='h-6 w-6' />
+            <a href={<MetaEntity metaKey='social' subKey='facebook' />}>
+              <TbBrandFacebookFilled className='h-6 w-6' />
             </a>
-            <a href='#'>
+            <a href={<MetaEntity metaKey='social' subKey='x' />}>
               <TbBrandX className='h-6 w-6' />
             </a>
-            <a href='#'>
+            <a href={<MetaEntity metaKey='social' subKey='instagram' />}>
               <TbBrandInstagram className='h-6 w-6' />
             </a>
-            <a href='#'>
+            <a href={<MetaEntity metaKey='social' subKey='youtube' />}>
               <TbBrandYoutubeFilled className='h-6 w-6' />
             </a>
           </div>
         </div>
       </div>
       <div className='bg-primary-800 text-center py-2 px-2 text-white'>
-        Terms of our Service · © 2024 PetFinder
+        Terms of our Service · © 2024 {<MetaEntity metaKey='name' />}
       </div>
     </div>
   )

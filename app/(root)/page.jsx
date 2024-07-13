@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import PetForm from '../components/PetForm'
 import { animalList } from '../mocks/animalsList'
 import TimeAgoFrom from './components/TimeAgoFrom'
@@ -26,7 +25,7 @@ export default function Home () {
           <PetForm />
         </div>
         <div className='flex-1 p-10'>
-          <img src='/img/home_banner_image_mobile.jpg' alt='Lost pets banner' />
+          <img src='/img/lost-pets-banner.webp' alt='Lost pets banner' />
         </div>
       </section>
       <section className='grid grid-cols-1 grid-rows-2 lg:grid-rows-1 lg:grid-cols-2'>
@@ -63,21 +62,24 @@ export default function Home () {
 
       <section className='bg-gray-50 py-8 antialiased md:py-12'>
         <div className='max-w-screen-lg mx-auto text-center'>
-          <h2 className=' text-5xl mb-5 font-bold'>
+          <h2 className='text-2xl md:text-5xl mb-5 font-bold'>
             When you report a lost/found pet, your post will appear here as
             featured post
           </h2>
-          <p className='text-2xl text-slate-500'>
+          <p className='md:text-2xl text-slate-500'>
             Have lost or found pets in your area? We have featured posts
-            available on our website to get more attention from visitors. Over
-            85% success rate finding your lost pets by reaching 1000s of
-            neighbors.
+            available on our website to get more attention from visitors. Over{' '}
+            <span className='underline underline-offset-3 decoration-4 decoration-green-400'>
+              85% success
+            </span>{' '}
+            rate finding your lost pets by reaching 1000s of neighbors.
           </p>
         </div>
         <div className='mx-auto max-w-screen-xl px-4 2xl:px-0'>
           <div className='mb-4 items-end justify-between space-y-4 sm:flex sm:space-y-0 md:mb-8'>
             <div>
               <h2 className='mt-3 text-xl font-semibold text-gray-900 sm:text-2xl'>
+                {/* <h3 class='mt-3 text-xl font-semibold text-gray-900 sm:text-2xl'> */}
                 Pet List
               </h2>
             </div>
@@ -151,9 +153,15 @@ export default function Home () {
                           )
                         } else if (item.status === 'Found') {
                           return (
-                            <span className='uppercase me-2 rounded bg-lime-200 px-2.5 py-0.5 text-xs font-bold text-lime-800'>
-                              {item.status}
-                            </span>
+                            <div className='flex items-center gap-1'>
+                              <span class='uppercase me-2 rounded bg-lime-200 px-2.5 py-0.5 text-xs font-bold text-lime-800'>
+                                {item.status}
+                              </span>
+                              <span class='relative flex h-3 w-3'>
+                                <span class='animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-500 opacity-75'></span>
+                                <span class='relative inline-flex rounded-full h-3 w-3 bg-lime-500'></span>
+                              </span>
+                            </div>
                           )
                         } else {
                           return (
@@ -185,9 +193,9 @@ export default function Home () {
                       href='#'
                       className='text-lg font-semibold leading-tight text-gray-900 hover:underline'
                     >
-                      <h3>
+                      <h4>
                         {item.name} ({item.specie._path.segments[1]})
-                      </h3>
+                      </h4>
                     </a>
                     <p>{item.description}</p>
                     <div className='mt-2 flex items-center gap-2'>
