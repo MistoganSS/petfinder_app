@@ -51,10 +51,10 @@ export default function Home() {
 
       <section class='bg-gray-50 py-8 antialiased md:py-12'>
         <div className='max-w-screen-lg mx-auto text-center'>
-          <h2 className=' text-5xl mb-5 font-bold'>
+          <h2 className='text-2xl md:text-5xl mb-5 font-bold'>
             When you report a lost/found pet, your post will appear here as featured post
           </h2>
-          <p className='text-2xl text-slate-500'>
+          <p className='md:text-2xl text-slate-500'>
             Have lost or found pets in your area? We have featured posts
             available on our website to get more attention from visitors.
             Over <span className='underline underline-offset-3 decoration-4 decoration-green-400'>85% success</span> rate finding your lost pets by reaching 1000s of
@@ -64,9 +64,9 @@ export default function Home() {
         <div class='mx-auto max-w-screen-xl px-4 2xl:px-0'>
           <div class='mb-4 items-end justify-between space-y-4 sm:flex sm:space-y-0 md:mb-8'>
             <div>
-              <h2 class='mt-3 text-xl font-semibold text-gray-900 sm:text-2xl'>
+              <h3 class='mt-3 text-xl font-semibold text-gray-900 sm:text-2xl'>
                 Pet List
-              </h2>
+              </h3>
             </div>
             <div class='flex items-center space-x-4'>
               <button
@@ -170,7 +170,7 @@ export default function Home() {
                       href='#'
                       class='text-lg font-semibold leading-tight text-gray-900 hover:underline'
                     >
-                      <h3>{item.name} ({item.specie._path.segments[1]})</h3>
+                      <h4>{item.name} ({item.specie._path.segments[1]})</h4>
                     </a>
                     <p>{item.description}</p>
                     <div class='mt-2 flex items-center gap-2'>

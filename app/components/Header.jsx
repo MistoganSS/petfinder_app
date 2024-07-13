@@ -1,12 +1,11 @@
 import Link from 'next/link'
 import React from 'react'
 import { TbMenu2 } from 'react-icons/tb'
-import MetaEntity from './MetaEntity'
 
-export default function Header() {
+export default function Header(props) {
   return (
     <nav className='bg-white bg-opacity-75 backdrop-blur-md sticky w-full z-20 top-0 start-0 border-b border-gray-200'>
-      <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
+      <div className={`${!props.dashboard ? 'max-w-screen-2xl p-4' : 'p-1'} flex flex-wrap items-center justify-between mx-auto`}>
         <a href='/' className='flex items-center space-x-3 rtl:space-x-reverse'>
           <img src='/petfinder.svg' className='h-12' alt='Logo' />
         </a>
@@ -34,13 +33,12 @@ export default function Header() {
         >
           <ul className='flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0'>
             <li>
-              <a
-                href='#'
-                className='block text-white py-2 px-3 bg-primary-700 rounded md:bg-transparent md:text-primary-800 md:p-0'
-                aria-current='page'
+              <Link
+                href='/catalog'
+                className='block text-black py-2 px-3  rounded md:bg-transparent md:text-primary-800 md:p-0'
               >
                 Lost/Found
-              </a>
+              </Link>
             </li>
             <li>
               <Link
@@ -50,14 +48,18 @@ export default function Header() {
                 How it Works
               </Link>
             </li>
-            <li>
-              <a
-                href='#'
-                className='block text-black py-2 px-3 rounded md:bg-transparent md:text-primary-800 md:p-0'
-              >
-                Join/Login
-              </a>
-            </li>
+            {!props.dashboard && (
+              <>
+                <li>
+                  <Link
+                    href='/login'
+                    className='block text-black py-2 px-3  rounded md:bg-transparent md:text-primary-800 md:p-0'
+                  >
+                    Join/Login
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
