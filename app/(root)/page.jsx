@@ -44,18 +44,17 @@ export default function Home () {
           <div className='bg-primary-100 absolute w-full h-[420px] md:[300px] lg:[420px] rounded-3xl -translate-y-10 lg:-translate-y-0 lg:-translate-x-44 -z-30'></div>
           <div className=' absolute text-xl md:text-2xl flex flex-col gap-5 font-bold text-gray-700 p-5'>
             <p className='flex gap-2 items-center justify-start'>
-              <FaListCheck className='fill-secondary-700' /> Create Free Listing
+              <FaListCheck className='fill-primary-800' /> Create Free Listing
             </p>
             <p className='flex gap-2 items-center justify-start'>
-              <FaPaperPlane className='fill-secondary-700' /> Free Alert
-              Instantly
+              <FaPaperPlane className='fill-primary-800' /> Free Alert Instantly
             </p>
             <p className='flex gap-2 items-center justify-start'>
-              <IoCreateSharp className='fill-secondary-700' /> Create Free
+              <IoCreateSharp className='fill-primary-800' /> Create Free
               Lost/Found Flyer
             </p>
             <p className='flex gap-2 items-center justify-start'>
-              <FaPeopleGroup className='fill-secondary-700' /> Reach More People
+              <FaPeopleGroup className='fill-primary-800' /> Reach More People
               In Your Local Area
             </p>
           </div>

@@ -32,7 +32,9 @@ export default function Footer () {
             <li className='hover:cursor-pointer hover:text-white'>
               <Link href='/about-us'>About us</Link>
             </li>
-            <li>Contact us</li>
+            <li className='hover:cursor-pointer hover:text-white'>
+              <Link href='/how-it-works'>How it Works</Link>
+            </li>
             <li>Privacy policy</li>
             <li>Join our network</li>
           </ul>

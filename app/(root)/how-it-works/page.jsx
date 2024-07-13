@@ -6,7 +6,7 @@ import PetBackHome from '../components/PetBackHome'
 export default function HowItWorks () {
   return (
     <div className='lg:p-10 p-5 pt-15 flex flex-col gap-10 md:gap-20'>
-      <section className='p-5 flex flex-col md:flex-row justify-center items-center'>
+      <section className='p-5 flex flex-col lg:flex-row justify-center items-center'>
         <div className='md:p-10'>
           <h1 className='text-3xl md:text-5xl font-bold mb-5 md:mb-10'>
             <span className='text-primary-600'> PetFinder</span> helps you find
@@ -23,7 +23,7 @@ export default function HowItWorks () {
             Get Started Now
           </Link>
         </div>
-        <img src='/how-it-works.svg' alt='' />
+        <img src='/how-it-works.svg' alt='How it Work' />
       </section>
       <section className=''>
         <h2 className='text-3xl md:text-5xl font-bold text-gray-700 mb-10'>
