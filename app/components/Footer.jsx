@@ -6,6 +6,7 @@ import {
 } from 'react-icons/tb'
 import { MdOutlineMail } from 'react-icons/md'
 import { FaFacebook } from 'react-icons/fa'
+import Link from 'next/link'
 
 export default function Footer () {
   return (
@@ -28,7 +29,9 @@ export default function Footer () {
           <h3 className='text-xl font-bold underline mb-5'>Quick Links</h3>
           <ul className='text-orange-200 list-disc px-5 flex flex-col gap-2'>
             <li>FAQ</li>
-            <li>About us</li>
+            <li className='hover:cursor-pointer hover:text-white'>
+              <Link href='/about-us'>About us</Link>
+            </li>
             <li>Contact us</li>
             <li>Privacy policy</li>
             <li>Join our network</li>
@@ -49,17 +52,17 @@ export default function Footer () {
           </h3>
           <div className='px-5 mb-5'>
             <form>
-              <div class='relative'>
+              <div className='relative'>
                 <input
                   type='text'
                   id='voice-search'
-                  class='bg-transparent rounded-full border-2 ps-5 placeholder:font-bold border-primary-800 text-red text-sm placeholder-primary-900 focus:text-white focus:outline-none block w-full p-2.5'
+                  className='bg-transparent rounded-full border-2 ps-5 placeholder:font-bold border-primary-800 text-red text-sm placeholder-primary-900 focus:text-white focus:outline-none block w-full p-2.5'
                   placeholder='Enter Email'
                   required
                 />
                 <button
                   type='submit'
-                  class='absolute inset-y-0 end-0 py-2.5 px-6 ms-2 rounded-full text-sm font-bold text-white bg-primary-800 hover:bg-primary-900'
+                  className='absolute inset-y-0 end-0 py-2.5 px-6 ms-2 rounded-full text-sm font-bold text-white bg-primary-800 hover:bg-primary-900'
                 >
                   Submit
                 </button>

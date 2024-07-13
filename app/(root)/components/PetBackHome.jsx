@@ -5,7 +5,7 @@ import { FaArrowRight } from 'react-icons/fa6'
 export default function PetBackHome () {
   return (
     <section className='bg-primary-600 rounded-3xl'>
-      <div className='bg-white flex flex-col md:flex-row rounded-full'>
+      <div className='bg-white flex flex-col justify-around items-center lg:flex-row rounded-t-full  lg:rounded-full'>
         <img
           className='flex-1'
           src='https://pawmaw-images.s3.ap-southeast-1.amazonaws.com/Public/Static-image/dog-image-01.webp'

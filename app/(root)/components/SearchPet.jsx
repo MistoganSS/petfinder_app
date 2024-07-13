@@ -30,9 +30,9 @@ export default async function SearchPet () {
             >
               <path
                 stroke='currentColor'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                stroke-width='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
                 d='M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2'
               />
             </svg>
@@ -65,15 +65,18 @@ export default async function SearchPet () {
             >
               <path
                 stroke='currentColor'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                stroke-width='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
                 d='M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2'
               />
             </svg>
           </div>
-          <select className='ps-8 bg-transparent border border-none text-gray-900 text-sm appearance-none rounded-lg block w-full p-2.5 focus:outline-none'>
-            <option selected disabled className='text-slate-500'>
+          <select
+            defaultValue='0'
+            className='ps-8 bg-transparent border border-none text-gray-900 text-sm appearance-none rounded-lg block w-full p-2.5 focus:outline-none'
+          >
+            <option disabled value='0' className='text-slate-500'>
               Choose a Specie
             </option>
             {species.map(({ id, name }) => {
@@ -104,9 +107,9 @@ export default async function SearchPet () {
             >
               <path
                 stroke='currentColor'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                stroke-width='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
                 d='M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2'
               />
             </svg>

@@ -29,33 +29,40 @@ export default function Home () {
           <img src='/img/home_banner_image_mobile.jpg' alt='Lost pets banner' />
         </div>
       </section>
-      <section className='flex flex-col md:flex-row justify-center items-center'>
-        <div className='bg-secondary-100 rounded-xl p-5'>
-          <div className='bg-white p-5 rounded-xl'>
-            <div className='bg-primary-500 p-2 rounded-xl'>
-              <img src='/cell_pet.svg' alt='Cell Info PetFinder' />
-            </div>
+      <section className='grid grid-cols-1 grid-rows-2 lg:grid-rows-1 lg:grid-cols-2'>
+        <div className='relative lg:translate-x-20 w-full h-[280px] md:[480px] lg:h-[580px] flex justify-center items-center'>
+          <img
+            src='/cell_pet.svg'
+            alt='Cell Info PetFinder'
+            className='absolute h-full'
+          />
+          <div className='absolute bg-white h-[250px] w-[250px] lg:h-[520px] lg:w-[520px] rounded-full -z-20 flex justify-center items-center'>
+            <div className='bg-red-400 h-[200px] w-[200px] lg:h-[420px] lg:w-[420px] rounded-full -z-10'></div>
           </div>
         </div>
-        <div className='bg-secondary-100 rounded-t-full md:rounded-t-none md:rounded-tr-full text-xl md:text-2xl flex flex-col gap-5 font-bold text-gray-700 p-5'>
-          <p className='flex gap-2 items-center justify-center md:justify-start'>
-            <FaListCheck className='fill-secondary-700' /> Create Free Listing
-          </p>
-          <p className='flex gap-2 items-center justify-center md:justify-start'>
-            <FaPaperPlane className='fill-secondary-700' /> Free Alert Instantly
-          </p>
-          <p className='flex gap-2 items-center justify-center md:justify-start'>
-            <IoCreateSharp className='fill-secondary-700' /> Create Free
-            Lost/Found Flyer
-          </p>
-          <p className='flex gap-2 items-center justify-center md:justify-start'>
-            <FaPeopleGroup className='fill-secondary-700' /> Reach More People
-            In Your Local Area
-          </p>
+        <div className='relative flex justify-start items-center'>
+          <div className='bg-primary-100 absolute w-full h-[420px] md:[300px] lg:[420px] rounded-3xl -translate-y-10 lg:-translate-y-0 lg:-translate-x-44 -z-30'></div>
+          <div className=' absolute text-xl md:text-2xl flex flex-col gap-5 font-bold text-gray-700 p-5'>
+            <p className='flex gap-2 items-center justify-start'>
+              <FaListCheck className='fill-secondary-700' /> Create Free Listing
+            </p>
+            <p className='flex gap-2 items-center justify-start'>
+              <FaPaperPlane className='fill-secondary-700' /> Free Alert
+              Instantly
+            </p>
+            <p className='flex gap-2 items-center justify-start'>
+              <IoCreateSharp className='fill-secondary-700' /> Create Free
+              Lost/Found Flyer
+            </p>
+            <p className='flex gap-2 items-center justify-start'>
+              <FaPeopleGroup className='fill-secondary-700' /> Reach More People
+              In Your Local Area
+            </p>
+          </div>
         </div>
       </section>
 
-      <section class='bg-gray-50 py-8 antialiased md:py-12'>
+      <section className='bg-gray-50 py-8 antialiased md:py-12'>
         <div className='max-w-screen-lg mx-auto text-center'>
           <h2 className=' text-5xl mb-5 font-bold'>
             When you report a lost/found pet, your post will appear here as
@@ -68,19 +75,19 @@ export default function Home () {
             neighbors.
           </p>
         </div>
-        <div class='mx-auto max-w-screen-xl px-4 2xl:px-0'>
-          <div class='mb-4 items-end justify-between space-y-4 sm:flex sm:space-y-0 md:mb-8'>
+        <div className='mx-auto max-w-screen-xl px-4 2xl:px-0'>
+          <div className='mb-4 items-end justify-between space-y-4 sm:flex sm:space-y-0 md:mb-8'>
             <div>
-              <h2 class='mt-3 text-xl font-semibold text-gray-900 sm:text-2xl'>
+              <h2 className='mt-3 text-xl font-semibold text-gray-900 sm:text-2xl'>
                 Pet List
               </h2>
             </div>
-            <div class='flex items-center space-x-4'>
+            <div className='flex items-center space-x-4'>
               <button
                 data-modal-toggle='filterModal'
                 data-modal-target='filterModal'
                 type='button'
-                class='flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 sm:w-auto'
+                className='flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 sm:w-auto'
               >
                 <TbFilter className='-ms-0.5 me-2 h-4 w-4' />
                 Filters
@@ -90,7 +97,7 @@ export default function Home () {
                 id='sortDropdownButton1'
                 data-dropdown-toggle='dropdownSort1'
                 type='button'
-                class='flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 sm:w-auto'
+                className='flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 sm:w-auto'
               >
                 <TbSortAscendingShapes className='-ms-0.5 me-2 h-4 w-4' />
                 Sort
@@ -98,17 +105,17 @@ export default function Home () {
               </button>
               <div
                 id='dropdownSort1'
-                class='z-50 hidden w-40 divide-y divide-gray-100 rounded-lg bg-white shadow'
+                className='z-50 hidden w-40 divide-y divide-gray-100 rounded-lg bg-white shadow'
                 data-popper-placement='bottom'
               >
                 <ul
-                  class='p-2 text-left text-sm font-medium text-gray-500'
+                  className='p-2 text-left text-sm font-medium text-gray-500'
                   aria-labelledby='sortDropdownButton'
                 >
                   <li>
                     <a
                       href='#'
-                      class='group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900'
+                      className='group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900'
                     >
                       {' '}
                       The most recent{' '}
@@ -118,42 +125,46 @@ export default function Home () {
               </div>
             </div>
           </div>
-          <div class='mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4'>
+          <div className='mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4'>
             {animalList.map(item => {
               return (
                 <article
                   key={item.id}
-                  class='rounded-lg border border-gray-200 bg-white p-6 shadow-sm'
+                  className='rounded-lg border border-gray-200 bg-white p-6 shadow-sm'
                 >
-                  <div class='h-56 w-full'>
+                  <div className='h-56 w-full'>
                     <a href='#'>
-                      <img class='mx-auto h-full' src={item.photos} alt='' />
+                      <img
+                        className='mx-auto h-full'
+                        src={item.photos}
+                        alt=''
+                      />
                     </a>
                   </div>
-                  <div class='pt-6'>
-                    <div class='mb-4 flex items-center justify-between gap-4'>
+                  <div className='pt-6'>
+                    <div className='mb-4 flex items-center justify-between gap-4'>
                       {(() => {
                         if (item.status === 'Lost') {
                           return (
-                            <span class='uppercase me-2 rounded bg-red-200 px-2.5 py-0.5 text-xs font-bold text-red-800'>
+                            <span className='uppercase me-2 rounded bg-red-200 px-2.5 py-0.5 text-xs font-bold text-red-800'>
                               {item.status}
                             </span>
                           )
                         } else if (item.status === 'Found') {
                           return (
-                            <span class='uppercase me-2 rounded bg-lime-200 px-2.5 py-0.5 text-xs font-bold text-lime-800'>
+                            <span className='uppercase me-2 rounded bg-lime-200 px-2.5 py-0.5 text-xs font-bold text-lime-800'>
                               {item.status}
                             </span>
                           )
                         } else {
                           return (
-                            <span class='uppercase me-2 rounded bg-primary-200 px-2.5 py-0.5 text-xs font-bold text-primary-800'>
+                            <span className='uppercase me-2 rounded bg-primary-200 px-2.5 py-0.5 text-xs font-bold text-primary-800'>
                               {item.status}
                             </span>
                           )
                         }
                       })()}
-                      <div class='flex items-center justify-end gap-1'>
+                      <div className='flex items-center justify-end gap-1'>
                         <span className='text-gray-500'>
                           <TbReportMoney />
                         </span>
@@ -163,34 +174,34 @@ export default function Home () {
                         <button
                           type='button'
                           data-tooltip-target='tooltip-add-to-favorites'
-                          class='rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900'
+                          className='rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900'
                           title='Add to Bookmark'
                         >
-                          <span class='sr-only'> Add to Bookmark </span>
+                          <span className='sr-only'> Add to Bookmark </span>
                           <TbBookmark className='h-5 w-5' />
                         </button>
                       </div>
                     </div>
                     <a
                       href='#'
-                      class='text-lg font-semibold leading-tight text-gray-900 hover:underline'
+                      className='text-lg font-semibold leading-tight text-gray-900 hover:underline'
                     >
                       <h3>
                         {item.name} ({item.specie._path.segments[1]})
                       </h3>
                     </a>
                     <p>{item.description}</p>
-                    <div class='mt-2 flex items-center gap-2'>
-                      <p class='text-sm font-medium text-gray-900'>
+                    <div className='mt-2 flex items-center gap-2'>
+                      <p className='text-sm font-medium text-gray-900'>
                         Seen on {item.dateLastSeen}
                       </p>
-                      <p class='text-sm font-medium text-gray-500'>
+                      <p className='text-sm font-medium text-gray-500'>
                         (<TimeAgoFrom date={item.dateLastSeen} /> ago)
                       </p>
                     </div>
-                    <ul class='mt-2 flex items-center gap-2'>
+                    <ul className='mt-2 flex items-center gap-2'>
                       <li>
-                        <p class='text-sm font-small text-gray-500'>
+                        <p className='text-sm font-small text-gray-500'>
                           <b>{item.areaLastSeen}</b> · {item.nearestLandmark},{' '}
                           {item.crossStreet}
                         </p>
@@ -198,29 +209,29 @@ export default function Home () {
                       <li className='rounded-lg hover:bg-gray-100 p-2'>
                         <a
                           href={`https://www.google.com/maps/search/${item.ddLat}+${item.ddLon}`}
-                          class='text-gray-500 hover:text-gray-900'
+                          className='text-gray-500 hover:text-gray-900'
                           title='Show un maps'
                           target='_blank'
                         >
-                          <span class='sr-only'> Localizar </span>
+                          <span className='sr-only'> Localizar </span>
                           <TbMapSearch className='h-4 w-4' />
                         </a>
                       </li>
                     </ul>
-                    <div class='mt-4 flex items-center justify-between gap-4'>
-                      <p class='text-2xl font-extrabold leading-tight text-gray-900 hidden'>
+                    <div className='mt-4 flex items-center justify-between gap-4'>
+                      <p className='text-2xl font-extrabold leading-tight text-gray-900 hidden'>
                         $1,699
                       </p>
                       <button
                         type='button'
-                        class='w-full inline-flex justify-center items-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300'
+                        className='w-full inline-flex justify-center items-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300'
                       >
                         <TbCirclePlus className='-ms-2 me-2 h-5 w-5' />
                         Details
                       </button>
                       <button
                         type='button'
-                        class='w-full inline-flex justify-center items-center rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100'
+                        className='w-full inline-flex justify-center items-center rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100'
                       >
                         <TbShare className='-ms-2 me-2 h-5 w-5' />
                         Share
@@ -231,10 +242,10 @@ export default function Home () {
               )
             })}
           </div>
-          <div class='w-full text-center'>
+          <div className='w-full text-center'>
             <button
               type='button'
-              class='rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100'
+              className='rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100'
             >
               Show more
             </button>
