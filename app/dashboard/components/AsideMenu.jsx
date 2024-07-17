@@ -2,9 +2,12 @@
 import { useState } from 'react'
 import { TbDog, TbBookmark, TbUsers, TbMenuDeep } from 'react-icons/tb'
 import { IoMdClose } from 'react-icons/io'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const Menu = () => {
   const [showSide, setShowSide] = useState(false)
+  const pathname = usePathname()
   return (
     <>
       <button
@@ -46,38 +49,46 @@ const Menu = () => {
           </div>
           <ul className='space-y-2 font-medium'>
             <li>
-              <a
-                href='#'
-                className='flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
+              <Link
+                href='/dashboard/report-pet'
+                className={`${
+                  pathname === '/dashboard/report-pet' ? 'text-primary-700' : ''
+                } flex items-center p-2 rounded-lg hover:bg-gray-100 group`}
               >
                 <TbDog className='w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900' />
-                <span className='flex-1 ms-3 whitespace-nowrap'>
+                <span className='flex-1 ms-3 whitespace-nowrap '>
                   My Reports
                 </span>
                 <span className='inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full'>
                   7
                 </span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href='#'
-                className='flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
+              <Link
+                href='/dashboard/saved-pet'
+                className={`${
+                  pathname === '/dashboard/saved-pet' ? 'text-primary-700' : ''
+                } flex items-center p-2 rounded-lg hover:bg-gray-100 group`}
               >
                 <TbBookmark className='w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900' />
                 <span className='ms-3'>Saved</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href='#'
-                className='flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
+              <Link
+                href='/dashboard/user-account'
+                className={`${
+                  pathname === '/dashboard/user-account'
+                    ? 'text-primary-700'
+                    : ''
+                } flex items-center p-2 rounded-lg hover:bg-gray-100 group`}
               >
                 <TbUsers className='w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900' />
                 <span className='flex-1 ms-3 whitespace-nowrap'>
                   Users Account
                 </span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

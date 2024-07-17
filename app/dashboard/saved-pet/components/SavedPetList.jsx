@@ -10,6 +10,7 @@ import {
 } from 'react-icons/tb'
 import { getSavedPetByUser } from '../services/SavedPet'
 import { useAuthContext } from '@/app/context/AuthWrapper'
+import Link from 'next/link'
 
 export default function SavedPetList () {
   const [savedPets, setsavedPets] = useState(null)
@@ -123,13 +124,13 @@ export default function SavedPetList () {
                   </ul>
                 </div>
                 <div className='mt-4 flex items-end gap-4 lg:col-span-2'>
-                  <button
-                    type='button'
+                  <Link
+                    href={`/pet-catalog/${item.id}`}
                     className='w-full inline-flex justify-center items-center rounded-lg bg-primary-700 px-5 py-2.5 text-xs font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300'
                   >
                     <TbCirclePlus className='-ms-2 me-2 h-5 w-5' />
                     View Details
-                  </button>
+                  </Link>
                   <button
                     type='button'
                     className='w-full inline-flex justify-center items-center rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-xs font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100'
