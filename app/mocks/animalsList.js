@@ -1,44 +1,5 @@
 export const animalList = [
   {
-    id: '0eYfRbd3j6tr2MZoLZkw',
-    reward: 427,
-    specie: {
-      _firestore: {
-        projectId: 'pets-api-f1d89'
-      },
-      _path: {
-        segments: ['species', 'Bird']
-      },
-      _converter: {}
-    },
-    haveCollar: true,
-    gender: 'Female',
-    color: 'Orange',
-    ddLon: -77.0768,
-    health: 'Fair',
-    description: 'eros suspendisse accumsan tortor quis turpis',
-    photos: 'https://i.postimg.cc/VsJSQgPK/30.jpg',
-    userId: {
-      _firestore: {
-        projectId: 'pets-api-f1d89'
-      },
-      _path: {
-        segments: ['users', 'x4OFhbS39ACsgBOuC44x']
-      },
-      _converter: {}
-    },
-    breed: 'Dachshund',
-    dateLastSeen: '2024-07-04',
-    ddLat: -12.0886,
-    size: 'Big',
-    areaLastSeen: 'San Miguel',
-    nearestLandmark: 'Parque de la Media Luna',
-    name: 'Zoe',
-    crossStreet: 'Av. Universitaria',
-    age: 3,
-    status: 'Reunited'
-  },
-  {
     id: '0mVSfGiKFyVuHxcaLMMq',
     reward: 765,
     specie: {
@@ -312,6 +273,45 @@ export const animalList = [
     status: 'Lost'
   },
   {
+    id: '0eYfRbd3j6tr2MZoLZkw',
+    reward: 427,
+    specie: {
+      _firestore: {
+        projectId: 'pets-api-f1d89'
+      },
+      _path: {
+        segments: ['species', 'Bird']
+      },
+      _converter: {}
+    },
+    haveCollar: true,
+    gender: 'Female',
+    color: 'Orange',
+    ddLon: -77.0768,
+    health: 'Fair',
+    description: 'eros suspendisse accumsan tortor quis turpis',
+    photos: 'https://i.postimg.cc/VsJSQgPK/30.jpg',
+    userId: {
+      _firestore: {
+        projectId: 'pets-api-f1d89'
+      },
+      _path: {
+        segments: ['users', 'x4OFhbS39ACsgBOuC44x']
+      },
+      _converter: {}
+    },
+    breed: 'Dachshund',
+    dateLastSeen: '2024-07-04',
+    ddLat: -12.0886,
+    size: 'Big',
+    areaLastSeen: 'San Miguel',
+    nearestLandmark: 'Parque de la Media Luna',
+    name: 'Zoe',
+    crossStreet: 'Av. Universitaria',
+    age: 3,
+    status: 'Reunited'
+  },
+  {
     id: '5eWvcd6GKUu9ccMYkXXi',
     reward: 315,
     specie: {
@@ -324,7 +324,7 @@ export const animalList = [
       _converter: {}
     },
     haveCollar: false,
-    gender: 'Female',
+    gender: 'Unknow',
     color: 'Teal',
     ddLon: -77.0717,
     health: 'Fair',

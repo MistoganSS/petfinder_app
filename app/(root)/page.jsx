@@ -4,7 +4,7 @@ import { IoCreateSharp } from 'react-icons/io5'
 import SearchPet from './components/SearchPet'
 import HowItWorksComponent from './components/HowItWorksComponent'
 import PetBackHome from './components/PetBackHome'
-import PetsCatalog from './components/PetsCatalog'
+import PetCatalog from './components/PetCatalog'
 
 export default function Home() {
   return (
@@ -64,7 +64,7 @@ export default function Home() {
             rate finding your lost pets by reaching 1000s of neighbors.
           </p>
         </div>
-        <PetsCatalog />
+        <PetCatalog />
       </section>
       <section className='lg:px-20 flex flex-col items-center gap-10'>
         <h3 className='text-5xl font-bold max-w-screen-md text-center'>

@@ -1,0 +1,33 @@
+[
+    {
+        "id": "status",
+        "name": "Status",
+        "handler": "handleStatusChange",
+        "options": [
+            { "value": "lost", "label": "Lost", "checked": false },
+            { "value": "found", "label": "Found", "checked": false },
+            { "value": "reunited", "label": "Reunited", "checked": false }
+        ]
+    },
+    {
+        "id": "species",
+        "name": "Species",
+        "handler": "handleSpeciesChange",
+        "options": [
+            { "value": "dog", "label": "Dog", "checked": false },
+            { "value": "cat", "label": "Cat", "checked": false },
+            { "value": "bird", "label": "Bird", "checked": false },
+            { "value": "rabbit", "label": "Rabbit", "checked": false }
+        ]
+    },
+    {
+        "id": "gender",
+        "name": "Gender",
+        "handler": "handleGenderChange",
+        "options": [
+            { "value": "male", "label": "Male", "checked": false },
+            { "value": "female", "label": "Female", "checked": false },
+            { "value": "unknow", "label": "Unknow", "checked": false }
+        ]
+    }
+]

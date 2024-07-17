@@ -56,8 +56,8 @@ export default function Header(props) {
             </li>
             <li>
               <Link
-                href='/catalog'
-                className={`${pathname === '/catalog'
+                href='/pet-catalog'
+                className={`${pathname === '/pet-catalog'
                   ? activeMenuClass
                   : ''
                   } block text-black py-2 px-3  rounded md:bg-transparent md:p-0`}
