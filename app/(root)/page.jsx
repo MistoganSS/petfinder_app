@@ -79,7 +79,7 @@ export default function Home () {
           <div className='mb-4 items-end justify-between space-y-4 sm:flex sm:space-y-0 md:mb-8'>
             <div>
               <h2 className='mt-3 text-xl font-semibold text-gray-900 sm:text-2xl'>
-                {/* <h3 class='mt-3 text-xl font-semibold text-gray-900 sm:text-2xl'> */}
+                {/* <h3 className='mt-3 text-xl font-semibold text-gray-900 sm:text-2xl'> */}
                 Pet List
               </h2>
             </div>
@@ -154,12 +154,12 @@ export default function Home () {
                         } else if (item.status === 'Found') {
                           return (
                             <div className='flex items-center gap-1'>
-                              <span class='uppercase me-2 rounded bg-lime-200 px-2.5 py-0.5 text-xs font-bold text-lime-800'>
+                              <span className='uppercase me-2 rounded bg-lime-200 px-2.5 py-0.5 text-xs font-bold text-lime-800'>
                                 {item.status}
                               </span>
-                              <span class='relative flex h-3 w-3'>
-                                <span class='animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-500 opacity-75'></span>
-                                <span class='relative inline-flex rounded-full h-3 w-3 bg-lime-500'></span>
+                              <span className='relative flex h-3 w-3'>
+                                <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-500 opacity-75'></span>
+                                <span className='relative inline-flex rounded-full h-3 w-3 bg-lime-500'></span>
                               </span>
                             </div>
                           )

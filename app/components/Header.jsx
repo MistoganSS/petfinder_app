@@ -1,4 +1,5 @@
 'use client'
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useState } from 'react'
@@ -18,12 +19,26 @@ export default function Header (props) {
           <img src='/petfinder.svg' className='h-12' alt='Logo' />
         </a>
         <div className='flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse'>
-          <button
-            type='button'
-            className='text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 text-center'
-          >
-            Report Pet
-          </button>
+          <div className='flex items-center gap-3'>
+            <button
+              type='button'
+              className='text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 text-center'
+            >
+              Report Pet
+            </button>
+            <SignedIn>
+              {pathname === '/' ? (
+                <Link
+                  href='/dashboard/listing-pet'
+                  className='font-bold border border-primary-700 hover:text-white hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-sm px-4 py-2 text-center'
+                >
+                  Dashboard
+                </Link>
+              ) : (
+                <UserButton />
+              )}
+            </SignedIn>
+          </div>
           <button
             onClick={() => setShowHeader(!showHeader)}
             data-collapse-toggle='navbar-sticky'
@@ -81,18 +96,20 @@ export default function Header (props) {
                 How it Works
               </Link>
             </li>
-            <li>
-              <Link
-                href='/login'
-                className={`${
-                  pathname === '/login'
-                    ? 'text-white bg-primary-700 md:text-primary-600'
-                    : ''
-                } block text-black py-2 px-3  rounded md:bg-transparent md:p-0`}
-              >
-                How it Works
-              </Link>
-            </li>
+            <SignedOut>
+              <li>
+                <Link
+                  href='/sign-in'
+                  className={`${
+                    pathname === '/sign-in'
+                      ? 'text-white bg-primary-700 md:text-primary-600'
+                      : ''
+                  } block text-black py-2 px-3  rounded md:bg-transparent md:p-0`}
+                >
+                  Login
+                </Link>
+              </li>
+            </SignedOut>
           </ul>
         </div>
       </div>
