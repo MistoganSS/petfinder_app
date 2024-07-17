@@ -104,6 +104,7 @@ export default function PetForm () {
               </div>
               <div className='relative z-0 w-full mb-5 group'>
                 <input
+                  autoComplete='current-password'
                   type='password'
                   name='password'
                   id='password'
