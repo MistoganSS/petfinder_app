@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { TbChevronDown, TbFilter, TbNumber } from 'react-icons/tb'
+import { TbChevronDown, TbEyeEdit, TbFilter } from 'react-icons/tb'
 import { animalList } from '@/app/mocks/animalsList'
 import PetFilter from '../components/PetFilter';
 import PetFilterMobile from '../components/PetFilterMobile';
@@ -73,12 +73,12 @@ const CatalogPetsPage = () => {
                         <h1 className="text-3xl font-bold tracking-tight text-gray-900">Pets</h1>
                         <div className="flex items-center gap-4">
                             <div className="group inline-flex justify-center text-sm font-medium text-gray-500">
-                            <span className='md:block hidden'>Showing</span> {totalPets} reports of {animalList.length}
+                            {totalPets} reports of {animalList.length}
                             </div>
                             <Menu as="div" className="relative inline-block text-left">
                                 <div>
                                     <MenuButton className="group inline-flex justify-center align-middle text-sm font-medium text-gray-700 hover:text-gray-900">
-                                        <TbNumber aria-hidden="true" className="h-5 w-5 me-1" />
+                                        <TbEyeEdit aria-hidden="true" className="h-5 w-5 me-1" />
                                         Pages
                                         <TbChevronDown
                                             aria-hidden="true"

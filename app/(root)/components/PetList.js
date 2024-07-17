@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import TimeAgoFrom from '../components/TimeAgoFrom'
-import { TbShare, TbBookmark } from 'react-icons/tb'
+import { TbBookmark, TbBrandFacebook } from 'react-icons/tb'
+import MetaEntity from '@/app/components/MetaEntity';
 
 function PetList({ filteredPets }) {
     return (
@@ -14,13 +15,13 @@ function PetList({ filteredPets }) {
                         <div className='h-56 w-full'>
                             <a href='#'>
                                 <img
-                                    className='mx-auto h-full'
+                                    className='mx-auto h-full rounded-xl'
                                     src={pet.photos}
                                     alt=''
                                 />
                             </a>
                         </div>
-                        <div className='pt-6'>
+                        <div className='pt-3'>
                             <div className='mb-4 flex items-center justify-between gap-4'>
                                 {(() => {
                                     if (pet.status.toLowerCase() === 'lost') {
@@ -66,11 +67,11 @@ function PetList({ filteredPets }) {
                                     </button>
                                 </div>
                             </div>
-                            <Link href={`/pet-catalog/${pet.id}`} className='text-lg font-semibold leading-tight text-gray-900 hover:underline'>
-                                <h4>
-                                    {pet.name} ({pet.specie._path.segments[1]})
-                                </h4>
-                            </Link>
+                            <h4 className='text-lg font-semibold leading-tight text-gray-900'>
+
+                                {pet.name} ({pet.specie._path.segments[1]})
+
+                            </h4>
                             <p className='text-sm'>{pet.description}</p>
                             <div className='mt-2'>
                                 <p className='text-xs font-medium text-gray-900'>
@@ -82,27 +83,28 @@ function PetList({ filteredPets }) {
                             <div className='mt-2 flex items-center gap-2000'>
                                 <a
                                     href={`https://www.google.com/maps/search/${pet.ddLat}+${pet.ddLon}`}
-                                    className='text-xs font-small text-gray-500 line'
-                                    title='Show un maps'
+                                    className='text-xs font-small text-gray-500 line hover:underline'
+                                    title='Show un Maps'
                                     target='_blank'
                                 >
                                     <span>{pet.areaLastSeen}</span> · {pet.nearestLandmark}, {pet.crossStreet}
                                 </a>
                             </div>
                             <div className='mt-4 flex items-center justify-between gap-2'>
-                                <button
+                                <Link href={`/pet-catalog/${pet.id}`}
                                     type='button'
-                                    className='inline-flex justify-center items-center rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100'
+                                    className='w-full inline-flex justify-center items-center rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100'
                                 >
                                     Details
-                                </button>
-                                <button
+                                </Link>
+                                <a
                                     type='button'
-                                    className='inline-flex justify-center items-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300'
+                                    href={`https://www.facebook.com/sharer/sharer.php?u=HOSTNAME/${pet.id}`}
+                                    className='w-full inline-flex justify-center items-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300'
                                 >
-                                    <TbShare className='-ms-2 me-2 h-4 w-4' />
+                                    <TbBrandFacebook className='-ms-2 me-2 h-4 w-4' />
                                     Share
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </article>

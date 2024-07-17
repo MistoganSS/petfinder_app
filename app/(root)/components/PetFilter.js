@@ -58,7 +58,7 @@ function PetFilter({ selectedStatus, setSelectedStatus, selectedSpecie, setSelec
 
     return (
         <form id='petFilter' className="hidden lg:block pe-4">
-            <h2 className='font-bold bg-primary-700 p-4 rounded-md text-white'>Filter Lost & Found Pets</h2>
+            <h2 className='font-bold bg-gray-200 p-4 rounded-md'>Filter Lost & Found Pets</h2>
             <div className='border-b border-gray-200 py-6'>
                 <h3 className='py-3 text-sm font-medium text-gray-900'>Last seen Pet</h3>
                 <div id="date-range-picker" className="flex items-center justify-between">
