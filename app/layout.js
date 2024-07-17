@@ -1,6 +1,8 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from './components/Header'
+import { ClerkProvider } from '@clerk/nextjs'
+import { AuthProvider } from './context/AuthWrapper'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,20 +13,24 @@ export const metadata = {
     icon: [
       {
         url: '/light-icon.svg',
-        media: '(prefers-color-scheme: light)',
+        media: '(prefers-color-scheme: light)'
       },
       {
         url: '/dark-icon.svg',
-        media: '(prefers-color-scheme: dark)',
-      },
+        media: '(prefers-color-scheme: dark)'
+      }
     ]
   }
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout ({ children }) {
   return (
-    <html lang='en'>
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <AuthProvider>
+        <html lang='en'>
+          <body className={inter.className}>{children}</body>
+        </html>
+      </AuthProvider>
+    </ClerkProvider>
   )
 }
