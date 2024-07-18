@@ -4,7 +4,8 @@ import { IoCreateSharp } from 'react-icons/io5'
 import SearchPet from './components/SearchPet'
 import HowItWorksComponent from './components/HowItWorksComponent'
 import PetBackHome from './components/PetBackHome'
-import PetCatalog from './components/PetCatalog'
+import PetListLatest from './components/PetListLatest'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -64,7 +65,26 @@ export default function Home() {
             rate finding your lost pets by reaching 1000s of neighbors.
           </p>
         </div>
-        <PetCatalog />
+        <div className='mx-auto max-w-screen-xl px-4 2xl:px-0'>
+          <div className='mb-4 items-end justify-between space-y-4 sm:flex sm:space-y-0 md:mb-8'>
+            <div>
+              <h2 className='mt-3 text-xl font-semibold text-gray-900 sm:text-2xl'>
+                Latest pets reported
+              </h2>
+            </div>
+          </div>
+          <div className='mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4'>
+            <PetListLatest numberOfItems={4} />
+          </div>
+          <div className='w-full text-center'>
+            <Link
+              href={'/pet-catalog'}
+              className='rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100'
+            >
+              Show more
+            </Link>
+          </div>
+        </div>
       </section>
       <section className='lg:px-20 flex flex-col items-center gap-10'>
         <h3 className='text-5xl font-bold max-w-screen-md text-center'>

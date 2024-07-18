@@ -1,4 +1,4 @@
-import TimeAgoFrom from '@/app/(root)/components/TimeAgoFrom'
+import TimeAgoFrom from '@/app/components/TimeAgoFrom'
 import {
   TbBookmark,
   TbCirclePlus,
