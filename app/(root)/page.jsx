@@ -74,7 +74,7 @@ export default function Home() {
             </div>
           </div>
           <div className='mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4'>
-            <PetListLatest numberOfItems={4} />
+            <PetListLatest limit={4} />
           </div>
           <div className='w-full text-center'>
             <Link

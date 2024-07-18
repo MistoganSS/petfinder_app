@@ -1,22 +1,11 @@
-import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel
-} from '@headlessui/react'
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { TbMinus, TbPlus } from 'react-icons/tb'
 import PetFilterConfig from './PetFilterConfig'
 
-function PetFilter ({
-  setSelectedStatus,
-  setSelectedSpecie,
-  setSelectedReward,
-  setSelectedGender,
-  setSelectedStartLastSeen,
-  setSelectedEndLastSeen
-}) {
+const PetFilter = ({ setStatus, setSpecies, setReward, setGenders, setStartLastSeen, setEndLastSeen }) => {
   const handleStatusChange = event => {
     const value = event.target.value
-    setSelectedStatus(prevStatus =>
+    setStatus(prevStatus =>
       prevStatus.includes(value)
         ? prevStatus.filter(status => status !== value)
         : [...prevStatus, value]
@@ -25,7 +14,7 @@ function PetFilter ({
 
   const handleSpeciesChange = event => {
     const value = event.target.value
-    setSelectedSpecie(prevSpecie =>
+    setSpecies(prevSpecie =>
       prevSpecie.includes(value)
         ? prevSpecie.filter(specie => specie !== value)
         : [...prevSpecie, value]
@@ -33,12 +22,12 @@ function PetFilter ({
   }
 
   const handleRewardChange = event => {
-    setSelectedReward(Number(event.target.value))
+    setReward(event.target.value)
   }
 
   const handleGenderChange = event => {
     const value = event.target.value
-    setSelectedGender(prevGender =>
+    setGenders(prevGender =>
       prevGender.includes(value)
         ? prevGender.filter(gender => gender !== value)
         : [...prevGender, value]
@@ -46,11 +35,11 @@ function PetFilter ({
   }
 
   const handleStartLastSeenChange = event => {
-    setSelectedStartLastSeen(event.target.value)
+    setStartLastSeen(event.target.value)
   }
 
   const handleEndLastSeenChange = event => {
-    setSelectedEndLastSeen(event.target.value)
+    setEndLastSeen(event.target.value)
   }
 
   const handlers = {

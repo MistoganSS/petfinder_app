@@ -1,3 +1,4 @@
+'use client'
 import { PetButtons, PetImage, PetInfo } from '@/app/components/PetItems'
 
 const PetListItem = ({ item }) => {

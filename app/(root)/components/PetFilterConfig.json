@@ -4,9 +4,9 @@
         "name": "Status",
         "handler": "handleStatusChange",
         "options": [
-            { "value": "lost", "label": "Lost", "checked": false },
-            { "value": "found", "label": "Found", "checked": false },
-            { "value": "reunited", "label": "Reunited", "checked": false }
+            { "value": "Lost", "label": "Lost", "checked": false },
+            { "value": "Found", "label": "Found", "checked": false },
+            { "value": "Reunited", "label": "Reunited", "checked": false }
         ]
     },
     {
@@ -25,9 +25,9 @@
         "name": "Gender",
         "handler": "handleGenderChange",
         "options": [
-            { "value": "male", "label": "Male", "checked": false },
-            { "value": "female", "label": "Female", "checked": false },
-            { "value": "unknow", "label": "Unknow", "checked": false }
+            { "value": "Male", "label": "Male", "checked": false },
+            { "value": "Female", "label": "Female", "checked": false },
+            { "value": "Unknow", "label": "Unknow", "checked": false }
         ]
     }
 ]

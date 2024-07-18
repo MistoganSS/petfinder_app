@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { TbChevronDown, TbEyeEdit, TbFilter } from 'react-icons/tb'
-import { animalList } from '@/app/mocks/animalsList'
 import PetFilter from '../components/PetFilter'
 import PetFilterMobile from '../components/PetFilterMobile'
 import PetList from '../components/PetList'
@@ -14,74 +13,90 @@ const pageOptions = [
   { name: '100 items per page', href: '#', current: false }
 ]
 
-function classNames (...classes) {
+function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 const CatalogPetsPage = () => {
-  const [filteredPets, setFilteredPets] = useState(animalList)
+  const [filteredPets, setFilteredPets] = useState([])
   const [totalPets, setTotalPets] = useState(0)
+  const [limit, setLimit] = useState(4)
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
-  const [selectedStatus, setSelectedStatus] = useState([])
-  const [selectedSpecie, setSelectedSpecie] = useState([])
-  const [selectedGender, setSelectedGender] = useState([])
-  const [selectedReward, setSelectedReward] = useState(0)
-  const [selectedStartLastSeen, setSelectedStartLastSeen] = useState('')
-  const [selectedEndLastSeen, setSelectedEndLastSeen] = useState('')
+  const [status, setStatus] = useState([])
+  const [species, setSpecies] = useState([])
+  const [genders, setGenders] = useState([])
+  const [reward, setReward] = useState(0)
+  const [startLastSeen, setStartLastSeen] = useState('')
+  const [endLastSeen, setEndLastSeen] = useState('')
 
   useEffect(() => {
-    const result = animalList.filter(pet => {
-      const range = new Date(pet.dateLastSeen)
-      const start = selectedStartLastSeen
-        ? new Date(selectedStartLastSeen)
-        : new Date(0)
-      const end = selectedEndLastSeen
-        ? new Date(selectedEndLastSeen)
-        : Date.now()
-      const isInRange = range >= start && range <= end
+    async function fetchPets() {
+      const query = new URLSearchParams();
 
-      return (
-        (selectedStatus.length === 0 ||
-          selectedStatus.includes(pet.status.toLocaleLowerCase())) &&
-        (selectedSpecie.length === 0 ||
-          selectedSpecie.includes(
-            pet.specie._path.segments[1].toLocaleLowerCase()
-          )) &&
-        (selectedGender.length === 0 ||
-          selectedGender.includes(pet.gender.toLocaleLowerCase())) &&
-        pet.reward >= selectedReward &&
-        isInRange
-      )
-    })
-    setFilteredPets(result)
-    setTotalPets(filteredPets.length)
+      if (limit) query.append('limit', limit);
+      if (reward) query.append('reward', reward);
+      if (startLastSeen) query.append('dateStart', startLastSeen);
+      if (endLastSeen) query.append('dateEnd', endLastSeen);
+
+      if (status.length > 0) {
+        query.set('status', status.join(','));
+      }
+
+      if (species.length > 0) {
+        query.set('specie', species.join(','));
+      }
+
+      if (genders.length > 0) {
+        query.set('gender', genders.join(','));
+      }
+
+      try {
+        const url = `https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/animals?${query.toString()}`;
+
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setFilteredPets(data)
+        setTotalPets(100)
+      } catch (error) {
+        console.error('Error fetching animals:', error.message);
+      }
+    }
+
+    fetchPets();
+
   }, [
-    selectedStatus,
-    selectedSpecie,
-    selectedReward,
-    selectedGender,
-    selectedStartLastSeen,
-    selectedEndLastSeen
+    status,
+    species,
+    reward,
+    genders,
+    startLastSeen,
+    endLastSeen
   ])
 
   return (
     <div className='bg-white'>
       <div>
         {/* Mobile filter dialog */}
-        <PetFilterMobile
-          selectedStatus={selectedStatus}
-          setSelectedStatus={setSelectedStatus}
-          selectedSpecie={selectedSpecie}
-          setSelectedSpecie={setSelectedSpecie}
-          selectedReward={selectedReward}
-          setSelectedReward={setSelectedReward}
-          selectedGender={selectedGender}
-          setSelectedGender={setSelectedGender}
+
+        {/*  <PetFilterMobile
+          status={status}
+          setStatus={setStatus}
+          species={species}
+          setSpecies={setSpecies}
+          reward={reward}
+          setReward={setReward}
+          genders={genders}
+          setGenders={setGenders}
           mobileFiltersOpen={mobileFiltersOpen}
           setMobileFiltersOpen={setMobileFiltersOpen}
-        />
+        /> */}
 
         <main className='mx-auto px-4 sm:px-4'>
           <div className='flex items-baseline justify-between border-b border-gray-200 pb-6 pt-6'>
@@ -90,7 +105,7 @@ const CatalogPetsPage = () => {
             </h1>
             <div className='flex items-center gap-4'>
               <div className='group inline-flex justify-center text-sm font-medium text-gray-500'>
-                {totalPets} reports of {animalList.length}
+                {totalPets} reports of {1000}
               </div>
               <Menu as='div' className='relative inline-block text-left'>
                 <div>
@@ -147,12 +162,12 @@ const CatalogPetsPage = () => {
             <div className='grid grid-cols-1 gap-x-4 gap-y-10 lg:grid-cols-4'>
               {/* Filters */}
               <PetFilter
-                setSelectedStatus={setSelectedStatus}
-                setSelectedSpecie={setSelectedSpecie}
-                setSelectedReward={setSelectedReward}
-                setSelectedGender={setSelectedGender}
-                setSelectedStartLastSeen={setSelectedStartLastSeen}
-                setSelectedEndLastSeen={setSelectedEndLastSeen}
+                setStatus={setStatus}
+                setSpecies={setSpecies}
+                setReward={setReward}
+                setGenders={setGenders}
+                setStartLastSeen={setStartLastSeen}
+                setEndLastSeen={setEndLastSeen}
               />
 
               {/* Pet grid */}
