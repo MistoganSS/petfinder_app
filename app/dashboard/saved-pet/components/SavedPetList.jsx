@@ -1,6 +1,4 @@
-'use client'
 import TimeAgoFrom from '@/app/(root)/components/TimeAgoFrom'
-import React, { useEffect, useState } from 'react'
 import {
   TbBookmark,
   TbCirclePlus,
@@ -8,22 +6,9 @@ import {
   TbReportMoney,
   TbShare
 } from 'react-icons/tb'
-import { getSavedPetByUser } from '../services/SavedPet'
-import { useAuthContext } from '@/app/context/AuthWrapper'
 import Link from 'next/link'
 
-export default function SavedPetList () {
-  const [savedPets, setsavedPets] = useState(null)
-  const user = useAuthContext()
-  useEffect(() => {
-    const initialFetch = async () => {
-      if (user) {
-        const savedPetsFetch = await getSavedPetByUser({ userId: user.id })
-        setsavedPets(savedPetsFetch)
-      }
-    }
-    initialFetch()
-  }, [user])
+export default function SavedPetList ({ savedPets, onRemoveSavedPet }) {
   return savedPets ? (
     <>
       {savedPets.length > 0 ? (
@@ -31,7 +16,7 @@ export default function SavedPetList () {
           {savedPets.map(item => {
             return (
               <article
-                key={item.id}
+                key={item.savedId}
                 className='rounded-lg border border-gray-200 bg-white p-2 shadow-sm grid grid-cols-1 lg:grid-cols-2 gap-2'
               >
                 <div className='h-full w-full'>
@@ -76,13 +61,14 @@ export default function SavedPetList () {
                         {item.reward}
                       </span>
                       <button
+                        onClick={() => onRemoveSavedPet(item.savedId)}
                         type='button'
                         data-tooltip-target='tooltip-add-to-favorites'
                         className='rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900'
                         title='Remove to Bookmark'
                       >
                         <span className='sr-only'> Remove to Bookmark </span>
-                        <TbBookmark className='h-5 w-5 fill-primary-700 text-primary-700' />
+                        <TbBookmark className='h-5 w-5 fill-primary-700 text-primary-700 hover:text-primary-800 hover:fill-primary-800' />
                       </button>
                     </div>
                   </div>
@@ -144,10 +130,10 @@ export default function SavedPetList () {
           })}
         </div>
       ) : (
-        <div className='mx-auto'>No tiene mascotas guardadas</div>
+        <div className='w-full text-center'>Doesn`t have favorite pets.</div>
       )}
     </>
   ) : (
-    <p>Loading...</p>
+    <div className='w-full text-center'>Loading...</div>
   )
 }

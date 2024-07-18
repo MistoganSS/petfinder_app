@@ -2,7 +2,7 @@ const API_URL =
   'https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/saved'
 const API_ANIMALS =
   'https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/animals'
-export const getSavedPetByUser = async ({ userId }) => {
+export const getSavedPetByUser = async ({ userId, page = 1, limit = 6 }) => {
   try {
     const response = await fetch(API_URL)
     if (!response.ok) throw new Error('HTTP: ', response.status)
@@ -21,6 +21,19 @@ export const getSavedPetByUser = async ({ userId }) => {
     })
     const petDetail = await Promise.all(petDetailsPromises)
     return petDetail
+  } catch (error) {
+    console.error('Error fetching saved pets: ', error)
+    throw error
+  }
+}
+export const deleteSavedPetByUser = async savedId => {
+  try {
+    const response = await fetch(`${API_URL}/${savedId}`, {
+      method: 'DELETE'
+    })
+    if (!response.ok) throw new Error('HTTP: ', response.status)
+
+    return response.ok
   } catch (error) {
     console.error('Error fetching saved pets: ', error)
     throw error

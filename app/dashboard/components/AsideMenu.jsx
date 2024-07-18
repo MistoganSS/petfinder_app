@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const Menu = () => {
-  const [showSide, setShowSide] = useState(false)
+  const [showSide, setShowSide] = useState(true)
   const pathname = usePathname()
   return (
     <>
@@ -17,7 +17,7 @@ const Menu = () => {
         aria-controls='default-sidebar'
         type='button'
         className={`${
-          !showSide ? 'hidden' : ''
+          showSide ? 'hidden' : ''
         } inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200`}
       >
         <span className='sr-only'>Open sidebar</span>
@@ -29,8 +29,8 @@ const Menu = () => {
         //-translate-x-full
         id='default-sidebar'
         className={`${
-          showSide ? '-translate-x-full fixed' : 'translate-x-0'
-        }  w-64 h-screen transition-transform `}
+          showSide ? 'translate-x-0 fixed lg:static' : '-translate-x-full fixed'
+        } w-64 h-screen transition-transform `}
         aria-label='Sidebar'
       >
         <div className='h-full px-3 py-4 overflow-y-auto bg-gray-50'>

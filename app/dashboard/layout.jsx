@@ -9,9 +9,9 @@ const layout = ({ children }) => {
   return (
     <>
       <Header dashboard={true} />
-      <main className='flex items-start gap-5'>
+      <main className='flex items-start gap-1 lg:gap-5'>
         <AsideMenu />
-        <div className='p-4'>{children}</div>
+        <div className='w-full px-1 py-4 lg:p-4'>{children}</div>
       </main>
     </>
   )

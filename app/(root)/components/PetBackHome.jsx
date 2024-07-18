@@ -7,7 +7,7 @@ import { TbArrowRight } from 'react-icons/tb'
 export default function PetBackHome () {
   return (
     <section className='bg-[#df1d42] rounded-3xl'>
-      <div className='bg-gradient-to-tr from-secondary-500 to-teal-50 flex flex-col justify-around items-center lg:flex-row rounded-3xl'>
+      <div className='bg-gradient-to-tr from-secondary-200 to-teal-50 flex flex-col justify-around items-center lg:flex-row rounded-3xl'>
         <img
           className='flex-1 rounded-3xl'
           src='/img/dog-image-01.png'
