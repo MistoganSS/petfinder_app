@@ -16,6 +16,7 @@ export default function SavedPetPage () {
           userId: user.id,
           limit
         })
+        console.log(savedPetsFetch)
         setsavedPets(savedPetsFetch)
       }
     }
