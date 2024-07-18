@@ -4,6 +4,5 @@ const API_ANIMALS =
 export const getReportByUser = async ({ userId, page = 1, limit = 6 }) => {
   const response = await fetch(`${API_ANIMALS}?page=${page}&limit=${limit}`)
   if (!response.ok) throw new Error(`HTTP ${response.status}`)
-  console.log(response)
   return await response.json()
 }

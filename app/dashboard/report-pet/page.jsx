@@ -6,25 +6,32 @@ import { useAuthContext } from '@/app/context/AuthWrapper'
 import ReportList from './components/ReportList'
 
 export default function ReportPetPage () {
+  const [limit, setLimit] = useState(6)
   const [reportPets, setReportPets] = useState(null)
   const user = useAuthContext()
 
   useEffect(() => {
     const fetchData = async () => {
       if (user) {
-        const newReports = await getReportByUser({ userId: user.id })
+        const newReports = await getReportByUser({ userId: user.id, limit })
         setReportPets(newReports)
       }
     }
 
     fetchData()
-  }, [user])
+  }, [user, limit])
+  const handleChange = event => {
+    const newLimit = parseInt(event.target.value)
+    setLimit(newLimit)
+  }
   return (
     <div className='w-full'>
       <div className='flex flex-col lg:flex-row gap-3 justify-between items-center mb-5'>
         <h2 className='text-xl font-bold'>My Reports</h2>
         <div>
           <select
+            value={limit}
+            onChange={handleChange}
             id='countries'
             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
           >
@@ -36,7 +43,11 @@ export default function ReportPetPage () {
           </select>
         </div>
       </div>
-      <ReportList reports={reportPets} />
+      {reportPets ? (
+        <ReportList reports={reportPets} />
+      ) : (
+        <div className=''>Loading...</div>
+      )}
     </div>
   )
 }
