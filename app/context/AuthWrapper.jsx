@@ -1,6 +1,6 @@
 'use client'
 import { useUser } from '@clerk/nextjs'
-import { createContext, useContext, useEffect, useRef, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 const getUserById = async providerId => {
   const url = `https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/users?provider=${providerId}`
   const response = await fetch(url)
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
         const response = await createUser(userSave)
         setUserValue(response)
       } else {
-        setUserValue(dataUser[0])
+        setUserValue(dataUser.users[0])
       }
     }
     if (isSignedIn && user) {

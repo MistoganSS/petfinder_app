@@ -4,13 +4,15 @@ const API_ANIMALS =
   'https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/animals'
 export const getSavedPetByUser = async ({ userId, page = 1, limit = 6 }) => {
   try {
-    const response = await fetch(API_URL)
+    const response = await fetch(
+      `${API_URL}?user=${userId}&page=${page}&limit=${limit}`
+    )
     if (!response.ok) throw new Error('HTTP: ', response.status)
     const data = await response.json()
-    const dataFilter = data.filter(
-      pet => pet.userId._path.segments[1] === userId
-    )
-    const petDetailsPromises = dataFilter.map(async pet => {
+    // const dataFilter = data.filter(
+    //   pet => pet.userId._path.segments[1] === userId
+    // )
+    const petDetailsPromises = data.map(async pet => {
       const petResponse = await fetch(
         `${API_ANIMALS}/${pet.animalId._path.segments[1]}`
       )

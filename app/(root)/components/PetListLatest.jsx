@@ -1,3 +1,5 @@
+'use client'
+
 import { animalList } from '../../mocks/animalsList'
 import PetListItem from './PetListItem'
 
