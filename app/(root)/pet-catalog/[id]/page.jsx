@@ -51,7 +51,7 @@ const DetailPetsPage = ({params}) => {
                                                 filter(item => {return item.id === pet.userId._path.segments[1]}).
                                                 map(item => {
                                                     return (
-                                                        <>Contact the email {item.email} and the phone number {item.phone}.</>)
+                                                        <span key={item.id}>Contact the email {item.email} and the phone number {item.phone}.</span>)
                                                 })}
                                         </div>
 

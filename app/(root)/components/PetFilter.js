@@ -2,8 +2,8 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react
 import { TbMinus, TbPlus } from 'react-icons/tb'
 import PetFilterConfig from './PetFilterConfig'
 
-function PetFilter({ selectedStatus, setSelectedStatus, selectedSpecie, setSelectedSpecie, selectedReward, setSelectedReward, selectedGender, setSelectedGender, selectedStartLastSeen, setSelectedStartLastSeen, selectedEndLastSeen, setSelectedEndLastSeen }) {
-    
+function PetFilter({ setSelectedStatus, setSelectedSpecie, setSelectedReward, setSelectedGender, setSelectedStartLastSeen, setSelectedEndLastSeen }) {
+
     const handleStatusChange = (event) => {
         const value = event.target.value
         setSelectedStatus(prevStatus =>
@@ -63,11 +63,11 @@ function PetFilter({ selectedStatus, setSelectedStatus, selectedSpecie, setSelec
                 <h3 className='py-3 text-sm font-medium text-gray-900'>Last seen Pet</h3>
                 <div id="date-range-picker" className="flex items-center justify-between">
                     <div className="relative">
-                        <input id="datepicker-range-start" value={selectedStartLastSeen} onChange={handleStartLastSeenChange} name="start" type="date" className="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="Select date start" />
+                        <input id="datepicker-range-start" onChange={handleStartLastSeenChange} name="start" type="date" className="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="Select date start" />
                     </div>
                     <span className="mx-0002 text-gray-500">to</span>
                     <div className="relative">
-                        <input id="datepicker-range-end" value={selectedEndLastSeen} onChange={handleEndLastSeenChange} name="end" type="date" className="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="Select date end" />
+                        <input id="datepicker-range-end" onChange={handleEndLastSeenChange} name="end" type="date" className="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="Select date end" />
                     </div>
                 </div>
             </div>
@@ -79,7 +79,8 @@ function PetFilter({ selectedStatus, setSelectedStatus, selectedSpecie, setSelec
                     <input
                         id="labels-range-input"
                         type="range"
-                        value={selectedReward}
+                        defaultValue={0}
+                        //value={selectedReward}
                         min="0" max="1500"
                         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                         onChange={handleRewardChange}

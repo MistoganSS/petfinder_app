@@ -1,7 +1,7 @@
 import { animalList } from '../../mocks/animalsList'
 import PetListItem from './PetListItem'
 
-const PetListLatest = ({numberOfItems}) => {
+const PetListLatest = ({ numberOfItems }) => {
     return (
         <>
             {animalList
@@ -9,7 +9,9 @@ const PetListLatest = ({numberOfItems}) => {
                 .slice(0, numberOfItems)
                 .map(pet => {
                     return (
-                        <PetListItem item={pet} />
+                        <article key={pet.id}>
+                            <PetListItem item={pet} />
+                        </article>
                     )
                 })}
         </>

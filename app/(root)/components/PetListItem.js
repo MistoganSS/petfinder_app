@@ -4,15 +4,15 @@ import Link from 'next/link'
 
 const PetListItem = ({ item }) => {
     return (
-        <article key={item.id} className='rounded-lg border border-gray-200 bg-white p-4 shadow-sm'>
+        <div className='rounded-lg border border-gray-200 bg-white p-4 shadow-sm'>
             <div className='h-56 w-full'>
-                <a href='#'>
+                <Link href={`/pet-catalog/${item.id}`}>
                     <img
                         className='mx-auto h-full rounded-xl'
                         src={item.photos}
-                        alt=''
+                        alt='Photo'
                     />
-                </a>
+                </Link>
             </div>
             <div className='pt-3'>
                 <div className='mb-4 flex items-center justify-between gap-4'>
@@ -100,7 +100,7 @@ const PetListItem = ({ item }) => {
                     </a>
                 </div>
             </div>
-        </article>
+        </div>
     )
 }
 

@@ -31,7 +31,6 @@ const CatalogPetsPage = () => {
     const [selectedStartLastSeen, setSelectedStartLastSeen] = useState('')
     const [selectedEndLastSeen, setSelectedEndLastSeen] = useState('')
 
-
     useEffect(() => {
         const result = animalList.filter(pet => {
             const range = new Date(pet.dateLastSeen)
@@ -128,17 +127,11 @@ const CatalogPetsPage = () => {
                         <div className="grid grid-cols-1 gap-x-4 gap-y-10 lg:grid-cols-4">
                             {/* Filters */}
                             <PetFilter
-                                selectedStatus={selectedStatus}
                                 setSelectedStatus={setSelectedStatus}
-                                selectedSpecie={selectedSpecie}
                                 setSelectedSpecie={setSelectedSpecie}
-                                selectedReward={selectedReward}
                                 setSelectedReward={setSelectedReward}
-                                selectedGender={selectedGender}
                                 setSelectedGender={setSelectedGender}
-                                selectedStartLastSeen={selectedStartLastSeen}
                                 setSelectedStartLastSeen={setSelectedStartLastSeen}
-                                selectedEndLastSeen={selectedEndLastSeen}
                                 setSelectedEndLastSeen={setSelectedEndLastSeen}
                             />
 
