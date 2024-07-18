@@ -26,8 +26,8 @@ const CatalogPetsPage = () => {
 
   const [selectedStatus, setSelectedStatus] = useState([])
   const [selectedSpecie, setSelectedSpecie] = useState([])
-  const [selectedReward, setSelectedReward] = useState(0)
   const [selectedGender, setSelectedGender] = useState([])
+  const [selectedReward, setSelectedReward] = useState(0)
   const [selectedStartLastSeen, setSelectedStartLastSeen] = useState('')
   const [selectedEndLastSeen, setSelectedEndLastSeen] = useState('')
 
