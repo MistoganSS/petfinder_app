@@ -15,11 +15,11 @@ export const PetInfo = ({
   item,
   classInfoName,
   classInfoDescription,
-  onRemoveSavedPet
+  onToggleSavedPet
 }) => {
   return (
     <>
-      <div className='mb-4 flex items-center justify-between gap-4'>
+      <div className='mb-4 flex flex-wrap items-center justify-between gap-3'>
         {(() => {
           if (item.status.toLowerCase() === 'lost') {
             return (
@@ -52,7 +52,7 @@ export const PetInfo = ({
             ${item.reward}
           </span>
           <button
-            onClick={() => onRemoveSavedPet(item.savedId)}
+            onClick={() => onToggleSavedPet(item.savedId)}
             data-tooltip-target='tooltip-add-to-favorites'
             className='rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900'
             title='Add to Bookmark'

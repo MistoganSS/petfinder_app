@@ -1,6 +1,5 @@
-'use client';
+'use client'
 
-import config from '@/config'
 import { animalList } from '../../mocks/animalsList'
 import PetListItem from './PetListItem'
 

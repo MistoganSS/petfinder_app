@@ -6,17 +6,21 @@ import { deleteSavedPetByUser, getSavedPetByUser } from './services/SavedPet'
 import Swal from 'sweetalert2'
 
 export default function SavedPetPage () {
+  const [limit, setlimit] = useState(6)
   const [savedPets, setsavedPets] = useState(null)
   const user = useAuthContext()
   useEffect(() => {
     const initialFetch = async () => {
       if (user) {
-        const savedPetsFetch = await getSavedPetByUser({ userId: user.id })
+        const savedPetsFetch = await getSavedPetByUser({
+          userId: user.id,
+          limit
+        })
         setsavedPets(savedPetsFetch)
       }
     }
     initialFetch()
-  }, [user])
+  }, [user, limit])
 
   const removeSavedPet = async savedId => {
     Swal.fire({
@@ -45,9 +49,29 @@ export default function SavedPetPage () {
       }
     })
   }
+  const handleChange = event => {
+    const newLimit = parseInt(event.target.value)
+    setlimit(newLimit)
+  }
   return (
     <div className='w-full'>
-      <h2 className='mb-5 text-xl font-bold'>Saved Pet</h2>
+      <div className='flex flex-col lg:flex-row gap-3 justify-between items-center mb-5'>
+        <h2 className='text-xl font-bold'>Saved Pets</h2>
+        <div>
+          <select
+            onChange={handleChange}
+            value={limit}
+            id='countries'
+            className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
+          >
+            <option value='3'>3 items per page</option>
+            <option value='6'>6 items per page</option>
+            <option value='10'>10 items per page</option>
+            <option value='25'>25 items per page</option>
+            <option value='50'>50 items per page</option>
+          </select>
+        </div>
+      </div>
       <SavedPetList savedPets={savedPets} onRemoveSavedPet={removeSavedPet} />
     </div>
   )
