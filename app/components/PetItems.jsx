@@ -1,6 +1,6 @@
 import { TbBookmark, TbBrandFacebook } from 'react-icons/tb'
 import Link from 'next/link'
-import TimeAgoFrom from './TimeAgoFrom'
+import ConvertTimestampToDate, {TimeElapsed} from './TimestampHandling'
 
 export const PetImage = ({ id, image, className }) => {
   return (
@@ -68,9 +68,9 @@ export const PetInfo = ({
       <p className={classInfoDescription}>{item.description}</p>
       <div className='mt-2'>
         <p className='text-xs font-medium text-gray-900'>
-          Seen on {item.dateLastSeen}{' '}
+          Seen on <ConvertTimestampToDate timestamp={item.dateLastSeen._seconds} />{' '}
           <span className='text-gray-500'>
-            (<TimeAgoFrom date={item.dateLastSeen} /> ago)
+            (<TimeElapsed timestamp={item.dateLastSeen._seconds} /> ago)
           </span>
         </p>
       </div>

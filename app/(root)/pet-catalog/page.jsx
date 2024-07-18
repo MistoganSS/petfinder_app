@@ -20,7 +20,7 @@ function classNames(...classes) {
 const CatalogPetsPage = () => {
   const [filteredPets, setFilteredPets] = useState([])
   const [totalPets, setTotalPets] = useState(0)
-  const [limit, setLimit] = useState(4)
+  const [limit, setLimit] = useState(1)
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
