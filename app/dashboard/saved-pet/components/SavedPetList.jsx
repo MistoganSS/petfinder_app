@@ -30,7 +30,7 @@ export default function SavedPetList ({ savedPets, onRemoveSavedPet }) {
 const PetItem = ({ item, handleRemoveSavedPet }) => {
   return (
     <article className='rounded-lg border border-gray-200 bg-white p-2 shadow-sm grid grid-cols-1 lg:grid-cols-2 gap-2'>
-      <PetImage id={item.id} image={item.photos} className='h-full w-full' />
+      <PetImage id={item.id} image={item.photos} className='w-full' />
       <div className='pt-6'>
         <PetInfo
           item={item}

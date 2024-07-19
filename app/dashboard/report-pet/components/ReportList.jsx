@@ -1,4 +1,6 @@
-import TimeAgoFrom from '@/app/components/TimeAgoFrom'
+import ConvertTimestampToDate, {
+  TimeElapsed
+} from '@/app/components/TimestampHandling'
 import Link from 'next/link'
 import React from 'react'
 import { FaEdit } from 'react-icons/fa'
@@ -24,9 +26,13 @@ export default function ReportList ({ reports }) {
                 </div>
                 <div>
                   <p className='text-xs font-medium text-gray-900'>
-                    Seen on {item.dateLastSeen}{' '}
+                    Seen on{' '}
+                    <ConvertTimestampToDate
+                      timestamp={item.dateLastSeen._seconds}
+                    />{' '}
                     <span className='text-gray-500'>
-                      (<TimeAgoFrom date={item.dateLastSeen} /> ago)
+                      (<TimeElapsed timestamp={item.dateLastSeen._seconds} />{' '}
+                      ago)
                     </span>
                   </p>
                 </div>

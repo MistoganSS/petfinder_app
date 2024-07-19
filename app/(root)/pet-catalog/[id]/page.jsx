@@ -3,7 +3,9 @@
 import { TbBrandFacebook, TbPlaystationCircle, TbPrinter } from 'react-icons/tb'
 import { animalList } from '@/app/mocks/animalsList'
 import { usersList } from '@/app/mocks/usersList'
-import TimeAgoFrom from '@/app/components/TimeAgoFrom'
+import ConvertTimestampToDate, {
+  TimeElapsed
+} from '@/app/components/TimestampHandling'
 
 const DetailPetsPage = ({ params }) => {
   const { id } = params
@@ -37,10 +39,19 @@ const DetailPetsPage = ({ params }) => {
                       </div>
                       <div>
                         <div className='text-xl text-right font-semibold'>
-                          <TimeAgoFrom date={pet.dateLastSeen} /> ago
+                          <span className='text-gray-500'>
+                            (
+                            <TimeElapsed
+                              timestamp={pet.dateLastSeen._seconds}
+                            />{' '}
+                            ago)
+                          </span>
                         </div>
                         <div className='text-xs text-right'>
-                          Seen on {pet.dateLastSeen}
+                          Seen on{' '}
+                          <ConvertTimestampToDate
+                            timestamp={pet.dateLastSeen._seconds}
+                          />{' '}
                         </div>
                       </div>
                     </div>
