@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const initialFetch = async () => {
       const dataUser = await getUserById(user.id)
-      if (!dataUser) {
+      if (dataUser.users.length === 0) {
         const userSave = {
           phone: '',
           fullName: user.fullName,
