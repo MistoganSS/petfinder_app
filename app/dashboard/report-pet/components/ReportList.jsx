@@ -1,35 +1,46 @@
 'use client'
-import ConvertTimestampToDate, { TimeElapsed } from '@/app/components/TimestampHandling'
+import ConvertTimestampToDate, {
+  TimeElapsed
+} from '@/app/components/TimestampHandling'
 import Link from 'next/link'
 import React from 'react'
 import { FaEdit } from 'react-icons/fa'
 import { FaTrash } from 'react-icons/fa6'
-import {config} from '@/config'
+import { config } from '@/config'
+import Swal from 'sweetalert2'
+import { deleteFetch } from '../service/ReportService'
 
-async function deleteFetch(id) {
-  const url = ''
-
-  const response = await fetch(url, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-  })
-
-  if (!response.ok) {
-    throw new Error('Error deleting')
+export default function ReportList ({ reports }) {
+  const handleDelete = id => {
+    try {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d97706',
+        cancelButtonColor: '#df1d42',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(result => {
+        if (result.isConfirmed) {
+          deleteFetch(id).then(res => {
+            if (res) {
+              Swal.fire({
+                title: 'Deleted!',
+                text: 'Your report Pet has been deleted.',
+                icon: 'success'
+              })
+            }
+          })
+        }
+      })
+    } catch (error) {
+      console.log('Error deleting:', error)
+    }
   }
-}
-
-async function hendleDelete(id) {
-  try {
-    const data = await deleteFetch(id)
-  } catch (error) {
-    console.log('Error deleting:', error)
+  if (reports.length === 0) {
+    return <div className='text-center'>No pet reports.</div>
   }
-}
-
-export default function ReportList({ reports }) {
   return (
     <div className='flex flex-col gap-3'>
       {reports.map(item => {
@@ -38,13 +49,22 @@ export default function ReportList({ reports }) {
             key={item.id}
             className='flex gap-2 w-full border shadow-sm px-4 py-3 rounded-md items-center'
           >
-            <img src={item.photos != '' ? item.photos : config.DEFAULT_PET_IMAGE_URL} className='h-20 rounded-full' alt='Photos' />
+            <img
+              src={
+                item.photos != '' ? item.photos : config.DEFAULT_PET_IMAGE_URL
+              }
+              className='h-20 rounded-full'
+              alt='Photos'
+            />
             <div className='w-full'>
-              <div className='flex justify-between w-full'>
+              <div className='flex flex-wrap justify-between w-full'>
                 <div>
-                  <h4 className='font-bold'>
+                  <Link
+                    href={`/pet-catalog/${item.id}`}
+                    className='font-bold hover:underline'
+                  >
                     {item.name} ({item.gender})
-                  </h4>
+                  </Link>
                   <p>{item.description}</p>
                 </div>
                 <div>
@@ -60,7 +80,7 @@ export default function ReportList({ reports }) {
                   </p>
                 </div>
               </div>
-              <div className='flex justify-between items-center'>
+              <div className='flex flex-wrap justify-between items-center'>
                 <p>
                   {item.areaLastSeen}-{item.nearestLandmark}, {item.crossStreet}
                 </p>
@@ -75,7 +95,7 @@ export default function ReportList({ reports }) {
                   </Link>
                   <button
                     type='button'
-                    onClick={hendleDelete}
+                    onClick={() => handleDelete(item.id)}
                     className='w-full inline-flex justify-center items-center rounded-lg bg-red-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300'
                   >
                     <FaTrash className='-ms-2 me-2 h-4 w-4' />

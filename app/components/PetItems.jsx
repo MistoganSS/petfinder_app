@@ -83,9 +83,9 @@ export const PetInfo = ({
           </SignedIn>
         </div>
       </div>
-      <h4 className={classInfoName}>
+      <Link href={`/pet-catalog/${item.id}`} className={classInfoName}>
         {item.name} ({item.specie._path.segments[1]})
-      </h4>
+      </Link>
       <p className={classInfoDescription}>{item.description}</p>
       <div className='mt-2'>
         <p className='text-xs font-medium text-gray-900'>

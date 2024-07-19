@@ -4,18 +4,19 @@ import { TbCirclePlus, TbCirclePlus2, TbFilter } from 'react-icons/tb'
 import PetFilter from '../components/PetFilter'
 import PetFilterMobile from '../components/PetFilterMobile'
 import PetList from '../components/PetList'
-import {config} from '@/config'
+import { config } from '@/config'
 
 const pageOptions = [
   { name: '2 items per view', value: '2' },
   { name: '4 items per view', value: '4' },
-  { name: '8 items per view', value: '8' }
+  { name: '8 items per view', value: '8' },
+  { name: '12 items per view', value: '12' }
 ]
 
 const CatalogPetsPage = () => {
   const [filteredPets, setFilteredPets] = useState([])
   const [itemsInView, setItemsInView] = useState(0)
-  const [limit, setLimit] = useState(2)
+  const [limit, setLimit] = useState(4)
   const [lastDoc, setLastDoc] = useState(null)
   const [loading, setLoading] = useState(false)
   const [loadMore, setLoadMore] = useState(0)
@@ -130,8 +131,10 @@ const CatalogPetsPage = () => {
                 value={limit}
                 onChange={handlePagesChange}
               >
-                {pageOptions.map(option => (
-                  <option value={option.value}>{option.name}</option>
+                {pageOptions.map((option, i) => (
+                  <option value={option.value} key={i}>
+                    {option.name}
+                  </option>
                 ))}
               </select>
               <button

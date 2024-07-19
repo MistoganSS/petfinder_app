@@ -18,7 +18,7 @@ const Menu = () => {
         type='button'
         className={`${
           showSide ? 'hidden' : ''
-        } inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200`}
+        } fixed inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200`}
       >
         <span className='sr-only'>Open sidebar</span>
         <TbMenuDeep size={30} />
@@ -58,9 +58,6 @@ const Menu = () => {
                 <TbDog className='w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900' />
                 <span className='flex-1 ms-3 whitespace-nowrap '>
                   My Reports
-                </span>
-                <span className='inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-primary-800 bg-primary-100 rounded-full'>
-                  7
                 </span>
               </Link>
             </li>

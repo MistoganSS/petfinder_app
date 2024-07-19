@@ -6,7 +6,7 @@ import { useAuthContext } from '@/app/context/AuthWrapper'
 import Link from 'next/link'
 import ReportList from './components/ReportList'
 
-export default function ReportPetPage() {
+export default function ReportPetPage () {
   const [limit, setLimit] = useState(6)
   const [reportPets, setReportPets] = useState(null)
   const user = useAuthContext()
@@ -28,7 +28,7 @@ export default function ReportPetPage() {
   return (
     <div className='w-full'>
       <div className='flex flex-col lg:flex-row gap-3 justify-between items-center mb-5'>
-        <h2 className='text-xl font-bold'>My Reports</h2>
+        <h2 className='text-xl font-bold lg:ms-9'>My Reports</h2>
         <div className='flex items-center gap-3'>
           <Link
             href={'/dashboard/report-pet/create'}

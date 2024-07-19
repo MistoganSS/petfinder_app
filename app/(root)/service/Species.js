@@ -1,7 +1,7 @@
-const URL_API =
-  'https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1'
+import { config } from '@/config'
+
 export const getSpecies = async () => {
-  const response = await fetch(`${URL_API}/species`)
+  const response = await fetch(`${config.apis.species}`)
   if (!response.ok) throw new Error('Error HTTP: ', response.status)
   const data = await response.json()
   return data

@@ -1,4 +1,4 @@
-import {config} from "@/config"
+import { config } from '@/config'
 
 export const getSavedPetByUser = async ({ userId, page = 1, limit = 6 }) => {
   try {
@@ -28,7 +28,7 @@ export const getSavedPetByUser = async ({ userId, page = 1, limit = 6 }) => {
 }
 export const deleteSavedPetByUser = async savedId => {
   try {
-    const response = await fetch(`${API_URL}/${savedId}`, {
+    const response = await fetch(`${config.apis.saved}/${savedId}`, {
       method: 'DELETE'
     })
     if (!response.ok) throw new Error('HTTP: ', response.status)

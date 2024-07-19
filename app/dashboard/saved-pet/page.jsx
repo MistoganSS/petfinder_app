@@ -53,7 +53,7 @@ export default function SavedPetPage () {
   return (
     <div className='w-full'>
       <div className='flex flex-col lg:flex-row gap-3 justify-between items-center mb-5'>
-        <h2 className='text-xl font-bold'>Saved Pets</h2>
+        <h2 className='text-xl font-bold lg:ms-9'>Saved Pets</h2>
         <div>
           <select
             onChange={handleChange}
