@@ -14,7 +14,7 @@ export default function ReportPetPage () {
   useEffect(() => {
     const fetchData = async () => {
       if (user) {
-        const newReports = await getReportByUser({ userId: user.id, limit: 2 })
+        const newReports = await getReportByUser({ userId: user.id, limit })
         setReportPets(newReports)
       }
     }
