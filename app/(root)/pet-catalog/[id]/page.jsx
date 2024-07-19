@@ -1,7 +1,7 @@
 import { TbBrandFacebook, TbPlaystationCircle } from 'react-icons/tb'
 import ConvertTimestampToDate, { TimeElapsed } from '@/app/components/TimestampHandling'
 import PrintButton from '@/app/components/PrintButton'
-import config from '@/config'
+import {config} from '@/config'
 
 const getAPet = async (id) => {
   try {

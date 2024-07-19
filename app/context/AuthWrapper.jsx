@@ -1,7 +1,7 @@
 'use client'
 import { useUser } from '@clerk/nextjs'
 import { createContext, useContext, useEffect, useState } from 'react'
-import config from '@/config'
+import {config} from '@/config'
 
 const getUserById = async providerId => {
   const url = `${config.apis.users}?provider=${providerId}`

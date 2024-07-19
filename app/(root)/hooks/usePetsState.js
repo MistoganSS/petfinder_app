@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { createSavedPet, getSavedPetByUser } from '../service/PetList'
 import Swal from 'sweetalert2'
 import { useUser } from '@clerk/nextjs'
-import config from '@/config'
+import {config} from '@/config'
 
 const fetchPets = async (limit = 0) => {
   const query = new URLSearchParams()

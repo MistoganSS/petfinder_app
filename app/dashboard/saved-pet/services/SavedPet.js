@@ -1,4 +1,4 @@
-import config from "@/config"
+import {config} from "@/config"
 
 export const getSavedPetByUser = async ({ userId, page = 1, limit = 6 }) => {
   try {

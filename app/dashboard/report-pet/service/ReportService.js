@@ -1,4 +1,4 @@
-import config from "@/config"
+import {config} from "@/config"
 
 export const getReportByUser = async ({ userId, page = 1, limit = 6 }) => {
   const response = await fetch(`${config.apis.animals}?page=${page}&limit=${limit}`)

@@ -1,4 +1,4 @@
-import config from "@/config"
+import {config} from "@/config"
 
 export const createSavedPet = async ({ userId, animalId }) => {
   const response = await fetch(config.apis.saved, {

@@ -4,7 +4,7 @@ import { TbCirclePlus, TbCirclePlus2, TbFilter } from 'react-icons/tb'
 import PetFilter from '../components/PetFilter'
 import PetFilterMobile from '../components/PetFilterMobile'
 import PetList from '../components/PetList'
-import config from '@/config'
+import {config} from '@/config'
 
 const pageOptions = [
   { name: '2 items per view', value: '2' },

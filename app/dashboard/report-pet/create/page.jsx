@@ -2,7 +2,7 @@
 import ReportForm from '../components/ReportForm';
 import { useEffect, useState } from 'react';
 import { useAuthContext } from '@/app/context/AuthWrapper';
-import config from '@/config';
+import {config} from '@/config';
 
 const CreateReportPage = () => {
     const [species, setSpecies] = useState([]);

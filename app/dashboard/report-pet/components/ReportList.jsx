@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 import { FaEdit } from 'react-icons/fa'
 import { FaTrash } from 'react-icons/fa6'
-import config from '@/config'
+import {config} from '@/config'
 
 async function deleteFetch(id) {
   const url = ''

@@ -1,7 +1,7 @@
 import { TbBookmark, TbBrandFacebook } from 'react-icons/tb'
 import Link from 'next/link'
 import ConvertTimestampToDate, { TimeElapsed } from './TimestampHandling'
-import config from '@/config'
+import {config} from '@/config'
 
 export const PetImage = ({ id, image, className }) => {
   return (

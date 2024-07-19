@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import ReportForm from '../../components/ReportForm'
-import config from '@/config'
+import {config} from '@/config'
 
 const EditReportPage = ({ params }) => {
     const { id } = params
