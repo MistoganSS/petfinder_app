@@ -6,9 +6,9 @@ import PetFilterMobile from '../components/PetFilterMobile'
 import PetList from '../components/PetList'
 
 const pageOptions = [
-  { name: '2 items per request', value: '2' },
-  { name: '4 items per request', value: '4' },
-  { name: '8 items per request', value: '8' }
+  { name: '2 items per view', value: '2' },
+  { name: '4 items per view', value: '4' },
+  { name: '8 items per view', value: '8' }
 ]
 
 const CatalogPetsPage = () => {
