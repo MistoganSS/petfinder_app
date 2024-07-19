@@ -1,6 +1,7 @@
 import { TbBookmark, TbBrandFacebook } from 'react-icons/tb'
 import Link from 'next/link'
 import ConvertTimestampToDate, { TimeElapsed } from './TimestampHandling'
+import { SignedIn } from '@clerk/nextjs'
 
 export const PetImage = ({ id, image, className }) => {
   return (
@@ -58,21 +59,23 @@ export const PetInfo = ({
           <span className='text-gray-500' title='Reward'>
             ${item.reward}
           </span>
-          <button
-            onClick={() => handleToggleSaved(item.savedId || item.id)}
-            data-tooltip-target='tooltip-add-to-favorites'
-            className={`rounded-lg p-2 ${
-              isBookmark
-                ? 'text-primary-700'
-                : 'text-gray-500 hover:text-gray-900'
-            } `}
-            title='Bookmark'
-          >
-            <span className='sr-only'> Add to Bookmark </span>
-            <TbBookmark
-              className={`h-5 w-5 ${isBookmark ? 'fill-primary-700' : ''}`}
-            />
-          </button>
+          <SignedIn>
+            <button
+              onClick={() => handleToggleSaved(item.savedId || item.id)}
+              data-tooltip-target='tooltip-add-to-favorites'
+              className={`rounded-lg p-2 ${
+                isBookmark
+                  ? 'text-primary-700'
+                  : 'text-gray-500 hover:text-gray-900'
+              } `}
+              title='Bookmark'
+            >
+              <span className='sr-only'> Add to Bookmark </span>
+              <TbBookmark
+                className={`h-5 w-5 ${isBookmark ? 'fill-primary-700' : ''}`}
+              />
+            </button>
+          </SignedIn>
         </div>
       </div>
       <h4 className={classInfoName}>

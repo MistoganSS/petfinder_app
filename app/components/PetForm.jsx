@@ -1,8 +1,20 @@
 'use client'
+import { useUser } from '@clerk/nextjs'
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
 export default function PetForm () {
   const [lostPet, setLostPet] = useState(true)
+  const { isSignedIn, isLoaded } = useUser()
+  const router = useRouter()
+
+  const handleClick = () => {
+    if (isSignedIn && isLoaded) {
+      router.push('/dashboard/report-pet/create')
+    } else {
+      router.push('/sign-in')
+    }
+  }
   const classNameInput = `block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none ${
     lostPet
       ? 'dark:focus:border-[#df1d42] focus:border-[#df1d42]'
@@ -56,7 +68,7 @@ export default function PetForm () {
             Found Pet
           </button>
         </div>
-        <div className=''>
+        <div onClick={handleClick}>
           <form>
             <div className='grid md:grid-cols-2 md:gap-6'>
               <div className='relative z-0 w-full mb-5 group'>
@@ -90,6 +102,7 @@ export default function PetForm () {
 
             <div className='relative z-0 w-full mb-5 group'>
               <input
+                disabled
                 type='text'
                 name='search_address'
                 id='search_address'

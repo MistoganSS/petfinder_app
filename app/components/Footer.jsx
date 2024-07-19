@@ -62,7 +62,7 @@ export default function Footer () {
                 <input
                   type='text'
                   id='voice-search'
-                  className='bg-transparent rounded-full border-2 ps-5 placeholder:font-bold border-primary-800 text-red text-sm placeholder-primary-900 focus:text-white focus:outline-none block w-full p-2.5'
+                  className='bg-transparent rounded-full border-2 ps-5 placeholder:font-bold border-primary-800 text-red text-sm placeholder-primary-900 apa focus:text-white focus:outline-none block w-full p-2.5'
                   placeholder='Enter Email'
                   required
                 />

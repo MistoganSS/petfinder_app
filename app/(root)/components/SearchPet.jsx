@@ -1,17 +1,36 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
+import { FaGitter } from 'react-icons/fa'
+import { IoLocationSharp } from 'react-icons/io5'
 import { MdOutlineDriveFileRenameOutline } from 'react-icons/md'
-const URL_API =
-  'https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1'
-const getSpecies = async () => {
-  const response = await fetch(`${URL_API}/species`)
-  if (!response.ok) throw new Error('Error HTTP: ', response.status)
-  const data = await response.json()
-  return data
-}
-export default async function SearchPet () {
-  const species = await getSpecies()
+import { getSpecies } from '../service/Species'
+import { useUser } from '@clerk/nextjs'
+import { useRouter } from 'next/navigation'
+
+export default function SearchPet () {
+  const { isSignedIn, isLoaded } = useUser()
+  const router = useRouter()
+  const [species, setSpecies] = useState(null)
+  useEffect(() => {
+    const fetchData = async () => {
+      const speciesData = await getSpecies()
+      setSpecies(speciesData)
+    }
+    fetchData()
+  }, [])
+
+  const handleClick = () => {
+    if (isSignedIn && isLoaded) {
+      router.push('/pet-catalog')
+    } else {
+      router.push('/sign-in')
+    }
+  }
   return (
-    <form className='w-full p-5 grid grid-cols-1 md:grid-cols-4 gap-5 place-items-center justify-items-center lg:text-center bg-primary-400/30 rounded-xl lg:rounded-full'>
+    <form
+      onClick={handleClick}
+      className='w-full p-5 grid grid-cols-1 md:grid-cols-4 gap-5 place-items-center justify-items-center lg:text-center bg-primary-400/30 rounded-xl lg:rounded-full'
+    >
       <div className='w-full'>
         <label
           htmlFor='name'
@@ -42,21 +61,7 @@ export default async function SearchPet () {
         </label>
         <div className='relative w-full'>
           <div className='absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none'>
-            <svg
-              className='w-4 h-4 text-gray-500'
-              aria-hidden='true'
-              xmlns='http://www.w3.org/2000/svg'
-              fill='none'
-              viewBox='0 0 18 20'
-            >
-              <path
-                stroke='currentColor'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                d='M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2'
-              />
-            </svg>
+            <FaGitter size='20' />
           </div>
           <select
             defaultValue='0'
@@ -65,13 +70,14 @@ export default async function SearchPet () {
             <option disabled value='0' className='text-slate-500'>
               Choose a Specie
             </option>
-            {species.map(({ id, name }) => {
-              return (
-                <option key={id} value={name}>
-                  {name}
-                </option>
-              )
-            })}
+            {species &&
+              species.map(({ id, name }) => {
+                return (
+                  <option key={id} value={name}>
+                    {name}
+                  </option>
+                )
+              })}
           </select>
         </div>
       </div>
@@ -84,21 +90,7 @@ export default async function SearchPet () {
         </label>
         <div className='relative w-full'>
           <div className='absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none'>
-            <svg
-              className='w-4 h-4 text-gray-500'
-              aria-hidden='true'
-              xmlns='http://www.w3.org/2000/svg'
-              fill='none'
-              viewBox='0 0 18 20'
-            >
-              <path
-                stroke='currentColor'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                d='M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2'
-              />
-            </svg>
+            <IoLocationSharp size='20' />
           </div>
           <input
             type='text'
