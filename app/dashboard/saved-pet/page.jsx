@@ -61,11 +61,11 @@ export default function SavedPetPage () {
             id='countries'
             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
           >
-            <option value='3'>3 items per page</option>
-            <option value='6'>6 items per page</option>
-            <option value='10'>10 items per page</option>
-            <option value='25'>25 items per page</option>
-            <option value='50'>50 items per page</option>
+            <option value='3'>3 items per view</option>
+            <option value='6'>6 items per view</option>
+            <option value='10'>10 items per view</option>
+            <option value='25'>25 items per view</option>
+            <option value='50'>50 items per view</option>
           </select>
         </div>
       </div>

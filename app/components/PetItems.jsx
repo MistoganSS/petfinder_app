@@ -2,12 +2,17 @@ import { TbBookmark, TbBrandFacebook } from 'react-icons/tb'
 import Link from 'next/link'
 import ConvertTimestampToDate, { TimeElapsed } from './TimestampHandling'
 import { SignedIn } from '@clerk/nextjs'
+import { config } from '@/config'
 
 export const PetImage = ({ id, image, className }) => {
   return (
     <div className={className}>
       <Link href={`/pet-catalog/${id}`}>
-        <img className='mx-auto h-full rounded-xl' src={image} alt='Photo' />
+        <img
+          className='mx-auto h-full rounded-xl'
+          src={image != '' ? image : config.DEFAULT_PET_IMAGE_URL}
+          alt='Photo'
+        />
       </Link>
     </div>
   )
@@ -93,7 +98,7 @@ export const PetInfo = ({
       </div>
       <div className='mt-2 flex items-center gap-2000'>
         <a
-          href={`https://www.google.com/maps/search/${item.ddLat}+${item.ddLon}`}
+          href={`${config.GEOLOCALIZATION_SERVICE_URL}/${item.ddLat}+${item.ddLon}`}
           className='text-xs font-small text-gray-500 line hover:underline'
           title='Show un Maps'
           target='_blank'
@@ -117,7 +122,7 @@ export const PetButtons = ({ id, className }) => {
       </Link>
       <a
         type='button'
-        href={`https://www.facebook.com/sharer/sharer.php?u=HOSTNAME/${id}`}
+        href={`${config.SOCIAL_SHARE_URL}/${id}`}
         className='w-full inline-flex justify-center items-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300'
       >
         <TbBrandFacebook className='-ms-2 me-2 h-4 w-4' />
