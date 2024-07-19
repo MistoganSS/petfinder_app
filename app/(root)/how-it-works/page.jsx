@@ -36,9 +36,12 @@ export default function HowItWorks () {
               Alert Rescue Squad
             </h3>
             <p className=''>Shout out to pet lovers around you</p>
-            <button className='p-4 rounded-lg text-white bg-primary-700 font-bold'>
+            <Link
+              href='/dashboard/report-pet'
+              className='p-4 rounded-lg text-white bg-primary-700 font-bold'
+            >
               Learn More
-            </button>
+            </Link>
           </div>
           <div className='flex flex-col items-center gap-3'>
             <img src='/report-lost-pets.svg' alt='Report Lost And Found Pet' />
@@ -46,9 +49,12 @@ export default function HowItWorks () {
               Report Lost And Found Pet
             </h3>
             <p className=''>Enlist your pet on our lost and found database</p>
-            <button className='p-4 rounded-lg text-white bg-primary-700 font-bold'>
+            <Link
+              href='/dashboard/report-pet'
+              className='p-4 rounded-lg text-white bg-primary-700 font-bold'
+            >
               Report Pet
-            </button>
+            </Link>
           </div>
           <div className='flex flex-col items-center gap-3'>
             <img src='/search-lost-pets.svg' alt='Search Lost & Found Pet' />
@@ -56,9 +62,12 @@ export default function HowItWorks () {
               Search Lost & Found Pet
             </h3>
             <p className=''>Search Lost & Found Pet</p>
-            <button className='p-4 rounded-lg text-white bg-primary-700 font-bold'>
+            <Link
+              href='/pet-catalog'
+              className='p-4 rounded-lg text-white bg-primary-700 font-bold'
+            >
               Search Pets
-            </button>
+            </Link>
           </div>
         </div>
       </section>

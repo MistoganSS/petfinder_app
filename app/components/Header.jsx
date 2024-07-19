@@ -26,12 +26,12 @@ export default function Header (props) {
         </a>
         <div className='flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse'>
           <div className='flex items-center gap-3'>
-            <button
-              type='button'
+            <Link
+              href='/dashboard/report-pet'
               className='text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 text-center'
             >
               Report Pet
-            </button>
+            </Link>
             <SignedIn>
               {pathname.startsWith('/dashboard/') ? (
                 <UserButton />

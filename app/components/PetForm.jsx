@@ -74,22 +74,6 @@ export default function PetForm () {
               </div>
               <div className='relative z-0 w-full mb-5 group'>
                 <input
-                  type='text'
-                  name='email_address'
-                  id='email_address'
-                  className={classNameInput}
-                  placeholder=' '
-                  required
-                />
-                <label htmlFor='email_address' className={classNameLabel}>
-                  Email Address
-                </label>
-              </div>
-            </div>
-
-            <div className='grid md:grid-cols-2 md:gap-6'>
-              <div className='relative z-0 w-full mb-5 group'>
-                <input
                   type='tel'
                   pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
                   name='contact'
@@ -102,21 +86,8 @@ export default function PetForm () {
                   Contact Number (123-456-7890)
                 </label>
               </div>
-              <div className='relative z-0 w-full mb-5 group'>
-                <input
-                  autoComplete='current-password'
-                  type='password'
-                  name='password'
-                  id='password'
-                  className={classNameInput}
-                  placeholder=' '
-                  required
-                />
-                <label htmlFor='password' className={classNameLabel}>
-                  Password
-                </label>
-              </div>
             </div>
+
             <div className='relative z-0 w-full mb-5 group'>
               <input
                 type='text'
