@@ -2,7 +2,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react
 import { TbMinus, TbPlus } from 'react-icons/tb'
 import PetFilterConfig from './PetFilterConfig'
 
-const PetFilter = ({ setStatus, setSpecies, setReward, setGenders, setStartLastSeen, setEndLastSeen }) => {
+const PetFilter = ({ setStatus, setSpecies, setReward, setGenders, setStartLastSeen, setEndLastSeen, setFilteredPets }) => {
   const handleStatusChange = event => {
     const value = event.target.value
     setStatus(prevStatus =>
@@ -10,6 +10,7 @@ const PetFilter = ({ setStatus, setSpecies, setReward, setGenders, setStartLastS
         ? prevStatus.filter(status => status !== value)
         : [...prevStatus, value]
     )
+    setFilteredPets([])
   }
 
   const handleSpeciesChange = event => {
@@ -19,10 +20,12 @@ const PetFilter = ({ setStatus, setSpecies, setReward, setGenders, setStartLastS
         ? prevSpecie.filter(specie => specie !== value)
         : [...prevSpecie, value]
     )
+    setFilteredPets([])
   }
 
   const handleRewardChange = event => {
     setReward(event.target.value)
+    setFilteredPets([])
   }
 
   const handleGenderChange = event => {
@@ -32,14 +35,17 @@ const PetFilter = ({ setStatus, setSpecies, setReward, setGenders, setStartLastS
         ? prevGender.filter(gender => gender !== value)
         : [...prevGender, value]
     )
+    setFilteredPets([])
   }
 
   const handleStartLastSeenChange = event => {
     setStartLastSeen(event.target.value)
+    setFilteredPets([])
   }
 
   const handleEndLastSeenChange = event => {
     setEndLastSeen(event.target.value)
+    setFilteredPets([])
   }
 
   const handlers = {
