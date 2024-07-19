@@ -13,14 +13,14 @@ const pageOptions = [
   { name: '100 items per page', href: '#', current: false }
 ]
 
-function classNames(...classes) {
+function classNames (...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 const CatalogPetsPage = () => {
   const [filteredPets, setFilteredPets] = useState([])
   const [totalPets, setTotalPets] = useState(0)
-  const [limit, setLimit] = useState(1)
+  const [limit, setLimit] = useState(10)
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
@@ -32,53 +32,44 @@ const CatalogPetsPage = () => {
   const [endLastSeen, setEndLastSeen] = useState('')
 
   useEffect(() => {
-    async function fetchPets() {
-      const query = new URLSearchParams();
+    async function fetchPets () {
+      const query = new URLSearchParams()
 
-      if (limit) query.append('limit', limit);
-      if (reward) query.append('reward', reward);
-      if (startLastSeen) query.append('dateStart', startLastSeen);
-      if (endLastSeen) query.append('dateEnd', endLastSeen);
+      if (limit) query.append('limit', limit)
+      if (reward) query.append('reward', reward)
+      if (startLastSeen) query.append('dateStart', startLastSeen)
+      if (endLastSeen) query.append('dateEnd', endLastSeen)
 
       if (status.length > 0) {
-        query.set('status', status.join(','));
+        query.set('status', status.join(','))
       }
 
       if (species.length > 0) {
-        query.set('specie', species.join(','));
+        query.set('specie', species.join(','))
       }
 
       if (genders.length > 0) {
-        query.set('gender', genders.join(','));
+        query.set('gender', genders.join(','))
       }
 
       try {
-        const url = `https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/animals?${query.toString()}`;
+        const url = `https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/animals?${query.toString()}`
 
-        const response = await fetch(url);
+        const response = await fetch(url)
 
         if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+          throw new Error(`HTTP error! Status: ${response.status}`)
         }
 
-        const data = await response.json();
+        const data = await response.json()
         setFilteredPets(data)
         setTotalPets(100)
       } catch (error) {
-        console.error('Error fetching animals:', error.message);
+        console.error('Error fetching animals:', error.message)
       }
     }
-
-    fetchPets();
-
-  }, [
-    status,
-    species,
-    reward,
-    genders,
-    startLastSeen,
-    endLastSeen
-  ])
+    fetchPets()
+  }, [status, species, reward, genders, startLastSeen, endLastSeen])
 
   return (
     <div className='bg-white'>

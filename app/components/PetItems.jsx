@@ -1,6 +1,6 @@
 import { TbBookmark, TbBrandFacebook } from 'react-icons/tb'
 import Link from 'next/link'
-import ConvertTimestampToDate, {TimeElapsed} from './TimestampHandling'
+import ConvertTimestampToDate, { TimeElapsed } from './TimestampHandling'
 
 export const PetImage = ({ id, image, className }) => {
   return (
@@ -15,8 +15,15 @@ export const PetInfo = ({
   item,
   classInfoName,
   classInfoDescription,
-  onToggleSavedPet
+  onToggleSavedPet,
+  isEjecute,
+  isBookmark
 }) => {
+  const handleToggleSaved = id => {
+    if (isEjecute) {
+      onToggleSavedPet(id)
+    }
+  }
   return (
     <>
       <div className='mb-4 flex flex-wrap items-center justify-between gap-3'>
@@ -52,13 +59,19 @@ export const PetInfo = ({
             ${item.reward}
           </span>
           <button
-            onClick={() => onToggleSavedPet(item.savedId)}
+            onClick={() => handleToggleSaved(item.savedId || item.id)}
             data-tooltip-target='tooltip-add-to-favorites'
-            className='rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900'
-            title='Add to Bookmark'
+            className={`rounded-lg p-2 ${
+              isBookmark
+                ? 'text-primary-700'
+                : 'text-gray-500 hover:text-gray-900'
+            } `}
+            title='Bookmark'
           >
             <span className='sr-only'> Add to Bookmark </span>
-            <TbBookmark className='h-5 w-5' />
+            <TbBookmark
+              className={`h-5 w-5 ${isBookmark ? 'fill-primary-700' : ''}`}
+            />
           </button>
         </div>
       </div>
@@ -68,7 +81,8 @@ export const PetInfo = ({
       <p className={classInfoDescription}>{item.description}</p>
       <div className='mt-2'>
         <p className='text-xs font-medium text-gray-900'>
-          Seen on <ConvertTimestampToDate timestamp={item.dateLastSeen._seconds} />{' '}
+          Seen on{' '}
+          <ConvertTimestampToDate timestamp={item.dateLastSeen._seconds} />{' '}
           <span className='text-gray-500'>
             (<TimeElapsed timestamp={item.dateLastSeen._seconds} /> ago)
           </span>

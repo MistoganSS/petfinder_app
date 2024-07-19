@@ -37,6 +37,8 @@ const PetItem = ({ item, handleRemoveSavedPet }) => {
           classInfoName='font-semibold leading-tight text-gray-900 hover:underline'
           classInfoDescription='text-xs line-clamp-2 hover:line-clamp-none'
           onToggleSavedPet={handleRemoveSavedPet}
+          isBookmark={true}
+          isEjecute={true}
         />
       </div>
       <PetButtons

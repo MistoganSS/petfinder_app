@@ -10,17 +10,17 @@ export default function SavedPetPage () {
   const [savedPets, setsavedPets] = useState(null)
   const user = useAuthContext()
   useEffect(() => {
-    const initialFetch = async () => {
-      if (user) {
-        const savedPetsFetch = await getSavedPetByUser({
-          userId: user.id,
-          limit
-        })
-        setsavedPets(savedPetsFetch)
-      }
+    if (user) {
+      reloadSavedPets()
     }
-    initialFetch()
   }, [user, limit])
+  const reloadSavedPets = async () => {
+    const savedPetsFetch = await getSavedPetByUser({
+      userId: user.id,
+      limit
+    })
+    setsavedPets(savedPetsFetch)
+  }
 
   const removeSavedPet = async savedId => {
     Swal.fire({
@@ -35,15 +35,12 @@ export default function SavedPetPage () {
       if (result.isConfirmed) {
         deleteSavedPetByUser(savedId).then(res => {
           if (res) {
+            reloadSavedPets()
             Swal.fire({
               title: 'Deleted!',
               text: 'Your bookmark Pet has been deleted.',
               icon: 'success'
             })
-            const updateSavedPets = savedPets.filter(
-              item => item.savedId !== savedId
-            )
-            setsavedPets(updateSavedPets)
           }
         })
       }
