@@ -80,7 +80,7 @@ const CatalogPetsPage = () => {
         setItemsInView(filteredPets.length + data.length)
         setLoading(false)
       } catch (error) {
-        console.error('Error fetching animals:', error.message)
+        console.error('Error fetching pets:', error.message)
         setLoading(false)
       }
     }
