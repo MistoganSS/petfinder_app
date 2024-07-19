@@ -1,26 +1,23 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { TbChevronDown, TbEyeEdit, TbFilter } from 'react-icons/tb'
+import { TbCirclePlus, TbCirclePlus2, TbFilter } from 'react-icons/tb'
 import PetFilter from '../components/PetFilter'
 import PetFilterMobile from '../components/PetFilterMobile'
 import PetList from '../components/PetList'
 
 const pageOptions = [
-  { name: '10 items per page', href: '#', current: true },
-  { name: '25 items per page', href: '#', current: false },
-  { name: '50 items per page', href: '#', current: false },
-  { name: '100 items per page', href: '#', current: false }
+  { name: '2 items per request', value: '2' },
+  { name: '4 items per request', value: '4' },
+  { name: '8 items per request', value: '8' }
 ]
-
-function classNames (...classes) {
-  return classes.filter(Boolean).join(' ')
-}
 
 const CatalogPetsPage = () => {
   const [filteredPets, setFilteredPets] = useState([])
-  const [totalPets, setTotalPets] = useState(0)
-  const [limit, setLimit] = useState(10)
+  const [itemsInView, setItemsInView] = useState(0)
+  const [limit, setLimit] = useState(2)
+  const [lastDoc, setLastDoc] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [loadMore, setLoadMore] = useState(0)
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
@@ -33,9 +30,11 @@ const CatalogPetsPage = () => {
 
   useEffect(() => {
     async function fetchPets () {
+      setLoading(true)
       const query = new URLSearchParams()
 
       if (limit) query.append('limit', limit)
+      if (lastDoc) query.append('lastDoc', lastDoc)
       if (reward) query.append('reward', reward)
       if (startLastSeen) query.append('dateStart', startLastSeen)
       if (endLastSeen) query.append('dateEnd', endLastSeen)
@@ -62,14 +61,40 @@ const CatalogPetsPage = () => {
         }
 
         const data = await response.json()
-        setFilteredPets(data)
-        setTotalPets(100)
+
+        if (lastDoc) {
+          // Add items
+          setFilteredPets(prevPets => [...prevPets, ...data])
+        } else {
+          // Add first items
+          setFilteredPets(data)
+        }
+
+        // Update last item
+        if (data.length > 0) {
+          setLastDoc(data[data.length - 1].id)
+        } else {
+          setLastDoc(null)
+        }
+
+        setItemsInView(filteredPets.length + data.length)
+        setLoading(false)
       } catch (error) {
-        console.error('Error fetching animals:', error.message)
+        console.error('Error fetching pets:', error.message)
+        setLoading(false)
       }
     }
+
     fetchPets()
-  }, [status, species, reward, genders, startLastSeen, endLastSeen])
+  }, [status, species, reward, genders, startLastSeen, endLastSeen, loadMore])
+
+  const handlePagesChange = event => {
+    setLimit(parseInt(event.target.value))
+  }
+
+  const handleLoadMore = () => {
+    setLoadMore(loadMore + 1)
+  }
 
   return (
     <div className='bg-white'>
@@ -96,44 +121,18 @@ const CatalogPetsPage = () => {
             </h1>
             <div className='flex items-center gap-4'>
               <div className='group inline-flex justify-center text-sm font-medium text-gray-500'>
-                {totalPets} reports of {1000}
+                Showing {itemsInView} reports
               </div>
-              <Menu as='div' className='relative inline-block text-left'>
-                <div>
-                  <MenuButton className='group inline-flex justify-center align-middle text-sm font-medium text-gray-700 hover:text-gray-900'>
-                    <TbEyeEdit aria-hidden='true' className='h-5 w-5 me-1' />
-                    Pages
-                    <TbChevronDown
-                      aria-hidden='true'
-                      className='-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500'
-                    />
-                  </MenuButton>
-                </div>
-
-                <MenuItems
-                  transition
-                  className='absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in'
-                >
-                  <div className='py-1'>
-                    {pageOptions.map(option => (
-                      <MenuItem key={option.name}>
-                        <a
-                          href={option.href}
-                          className={classNames(
-                            option.current
-                              ? 'font-medium text-gray-900'
-                              : 'text-gray-500',
-                            'block px-4 py-2 text-sm data-[focus]:bg-gray-100'
-                          )}
-                        >
-                          {option.name}
-                        </a>
-                      </MenuItem>
-                    ))}
-                  </div>
-                </MenuItems>
-              </Menu>
-
+              <select
+                className='block px-4 pe-9 border-gray-200 rounded-full text-sm disabled:opacity-50 disabled:pointer-events-none'
+                id='limitSelect'
+                value={limit}
+                onChange={handlePagesChange}
+              >
+                {pageOptions.map(option => (
+                  <option value={option.value}>{option.name}</option>
+                ))}
+              </select>
               <button
                 type='button'
                 onClick={() => setMobileFiltersOpen(true)}
@@ -159,11 +158,34 @@ const CatalogPetsPage = () => {
                 setGenders={setGenders}
                 setStartLastSeen={setStartLastSeen}
                 setEndLastSeen={setEndLastSeen}
+                setFilteredPets={setFilteredPets}
               />
 
               {/* Pet grid */}
               <div className='lg:col-span-3'>
                 <PetList filteredPets={filteredPets} />
+
+                <div className='w-full text-center'>
+                  <button
+                    onClick={handleLoadMore}
+                    disabled={loading}
+                    type='button'
+                    className='py-2.5 px-5 me-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 inline-flex items-center'
+                  >
+                    {loading ? (
+                      <TbCirclePlus2
+                        aria-hidden='true'
+                        className='inline w-5 h-5 me-3 animate-spin'
+                      />
+                    ) : (
+                      <TbCirclePlus
+                        aria-hidden='true'
+                        className='inline w-5 h-5 me-3 '
+                      />
+                    )}
+                    {loading ? 'Loading...' : 'Show more'}
+                  </button>
+                </div>
               </div>
             </div>
           </section>
