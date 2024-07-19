@@ -37,7 +37,7 @@ export default function Header (props) {
                 <UserButton />
               ) : (
                 <Link
-                  href='/dashboard/listing-pet'
+                  href='/dashboard/report-pet'
                   className='font-bold border border-primary-700 hover:text-white hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-sm px-4 py-2 text-center'
                 >
                   Dashboard

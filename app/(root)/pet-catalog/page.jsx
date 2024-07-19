@@ -4,6 +4,7 @@ import { TbCirclePlus, TbCirclePlus2, TbFilter } from 'react-icons/tb'
 import PetFilter from '../components/PetFilter'
 import PetFilterMobile from '../components/PetFilterMobile'
 import PetList from '../components/PetList'
+import config from '@/config'
 
 const pageOptions = [
   { name: '2 items per view', value: '2' },
@@ -52,7 +53,7 @@ const CatalogPetsPage = () => {
       }
 
       try {
-        const url = `https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/animals?${query.toString()}`
+        const url = `${config.apis.animals}?${query.toString()}`
 
         const response = await fetch(url)
 

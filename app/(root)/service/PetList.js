@@ -1,6 +1,7 @@
-const API_SAVED = `https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/saved`
+import config from "@/config"
+
 export const createSavedPet = async ({ userId, animalId }) => {
-  const response = await fetch(API_SAVED, {
+  const response = await fetch(config.apis.saved, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -13,7 +14,7 @@ export const createSavedPet = async ({ userId, animalId }) => {
 }
 export const getSavedPetByUser = async ({ userId }) => {
   try {
-    const response = await fetch(`${API_SAVED}?user=${userId}`)
+    const response = await fetch(`${config.apis.saved}?user=${userId}`)
     if (!response.ok) throw new Error('HTTP: ', response.status)
     const data = await response.json()
     const dataSaved = data.map(item => {

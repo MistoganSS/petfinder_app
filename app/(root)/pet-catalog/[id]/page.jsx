@@ -1,10 +1,11 @@
 import { TbBrandFacebook, TbPlaystationCircle } from 'react-icons/tb'
 import ConvertTimestampToDate, { TimeElapsed } from '@/app/components/TimestampHandling'
 import PrintButton from '@/app/components/PrintButton'
+import config from '@/config'
 
 const getAPet = async (id) => {
   try {
-    const url = `https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/animals/${id}`
+    const url = `${config.apis.animals}/${id}`
 
     const response = await fetch(url)
 
@@ -28,7 +29,7 @@ const DetailPetsPage = async ({ params }) => {
       <div className='max-w-screen-xl px-4 mx-auto 2xl:px-0'>
         <div className='lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16'>
           <div className='shrink-0 max-w-md lg:max-w-lg mx-auto'>
-            <img className='w-full' src={pet.photos} alt='Photo' />
+            <img className='w-full' src={pet.photos != '' ? pet.photos : config.DEFAULT_PET_IMAGE_URL} alt='Photo' />
           </div>
 
           <div className='mt-6 sm:mt-8 lg:mt-0'>
@@ -81,7 +82,7 @@ const DetailPetsPage = async ({ params }) => {
                   {pet.nearestLandmark} - {pet.crossStreet}
                 </div>
                 <a
-                  href={`https://www.google.com/maps/search/${pet.ddLat}+${pet.ddLon}`}
+                  href={`${config.GEOLOCALIZATION_SERVICE_URL}/${pet.ddLat}+${pet.ddLon}`}
                   className='text-xs text-gray-600 hover:text-gray-900'
                   title='Show in Maps'
                   target='_blank'
@@ -95,7 +96,7 @@ const DetailPetsPage = async ({ params }) => {
               <PrintButton />
               <a
                 type='button'
-                href={`https://www.facebook.com/sharer/sharer.php?u=HOSTNAME/${id}`}
+                href={`${config.SOCIAL_SHARE_URL}/${id}`}
                 className='inline-flex justify-center items-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300'
               >
                 <TbBrandFacebook className='w-5 h-5 -ms-2 me-2' />

@@ -4,12 +4,14 @@ import { useEffect, useState } from 'react'
 import { createSavedPet, getSavedPetByUser } from '../service/PetList'
 import Swal from 'sweetalert2'
 import { useUser } from '@clerk/nextjs'
+import config from '@/config'
+
 const fetchPets = async (limit = 0) => {
   const query = new URLSearchParams()
 
   if (limit) query.append('limit', limit)
 
-  const url = `https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/animals?${query.toString()}`
+  const url = `${config.apis.animals}?${query.toString()}`
 
   const response = await fetch(url)
 

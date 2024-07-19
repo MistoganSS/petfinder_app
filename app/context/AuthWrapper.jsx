@@ -1,8 +1,10 @@
 'use client'
 import { useUser } from '@clerk/nextjs'
 import { createContext, useContext, useEffect, useState } from 'react'
+import config from '@/config'
+
 const getUserById = async providerId => {
-  const url = `https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/users?provider=${providerId}`
+  const url = `${config.apis.users}?provider=${providerId}`
   const response = await fetch(url)
   if (!response.ok) throw new Error(`Error HTTP: ${response.status}`)
   const data = await response.json()
@@ -11,7 +13,7 @@ const getUserById = async providerId => {
   return data
 }
 const createUser = async user => {
-  const url = `https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/users`
+  const url = `${config.apis.users}`
   const response = await fetch(url, {
     method: 'POST',
     headers: {

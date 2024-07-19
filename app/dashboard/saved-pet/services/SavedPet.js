@@ -1,11 +1,9 @@
-const API_URL =
-  'https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/saved'
-const API_ANIMALS =
-  'https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/animals'
+import config from "@/config"
+
 export const getSavedPetByUser = async ({ userId, page = 1, limit = 6 }) => {
   try {
     const response = await fetch(
-      `${API_URL}?user=${userId}&page=${page}&limit=${limit}`
+      `${config.apis.saved}?user=${userId}&page=${page}&limit=${limit}`
     )
     if (!response.ok) throw new Error('HTTP: ', response.status)
     const data = await response.json()
@@ -14,7 +12,7 @@ export const getSavedPetByUser = async ({ userId, page = 1, limit = 6 }) => {
     // )
     const petDetailsPromises = data.map(async pet => {
       const petResponse = await fetch(
-        `${API_ANIMALS}/${pet.animalId._path.segments[1]}`
+        `${config.apis.animals}/${pet.animalId._path.segments[1]}`
       )
       if (!petResponse.ok)
         throw new Error('Http, animal no existe, ', petResponse.status)

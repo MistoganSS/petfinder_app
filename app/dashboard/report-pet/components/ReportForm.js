@@ -3,7 +3,11 @@ import React, { useEffect, useState } from 'react'
 
 const ReportForm = ({ initialData = {}, onSubmit, species }) => {
     const [formData, setFormData] = useState(initialData)
-
+    const inpuTextClass = 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5'
+    const inputSelectClass = 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5'
+    const inpuRadioClass= "relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"
+    const inpuTextareaClass= 'block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500'
+    
     useEffect(() => {
         if (initialData.dateLastSeen?._seconds) {
             const formattedDate = timestampToDate(initialData.dateLastSeen._seconds)
@@ -73,11 +77,11 @@ const ReportForm = ({ initialData = {}, onSubmit, species }) => {
 
                         <div className="sm:col-span-2">
                             <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900">Pet Name</label>
-                            <input type="text" name="name" id="name" value={formData.name} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type pet name" required="" />
+                            <input type="text" name="name" id="name" value={formData.name} onChange={handleChange} className={inpuTextClass} placeholder="Type pet name" required="" />
                         </div>
                         <div className='w-full'>
                             <label htmlFor="specie" className="block mb-2 text-sm font-medium text-gray-900">Specie</label>
-                            <select id="specie" name='specie' value={formData.specie} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+                            <select id="specie" name='specie' value={formData.specie} onChange={handleChange} className={inputSelectClass}>
                                 {species.map((specie) => (
                                     <option key={specie.id} value={specie.id}>
                                         {specie.name}
@@ -88,48 +92,48 @@ const ReportForm = ({ initialData = {}, onSubmit, species }) => {
 
                         <div className="w-full">
                             <label htmlFor="reward" className="block mb-2 text-sm font-medium text-gray-900">Reward</label>
-                            <input type="number" name="reward" id="reward" value={formData.reward} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="0" required="" />
+                            <input type="number" name="reward" id="reward" value={formData.reward} onChange={handleChange} className={inpuTextClass} placeholder="0" required="" />
                         </div>
                         <div className="w-full">
                             <label htmlFor="dateLastSeen" className="block mb-2 text-sm font-medium text-gray-900">Last Seen</label>
-                            <input type="date" name="dateLastSeen" id="dateLastSeen" value={formData.dateLastSeen} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="" />
+                            <input type="date" name="dateLastSeen" id="dateLastSeen" value={formData.dateLastSeen} onChange={handleChange} className={inpuTextClass} required="" />
                         </div>
 
                         <div className="w-full">
                             <label htmlFor="areaLastSeen" className="block mb-2 text-sm font-medium text-gray-900">Area Last Seen</label>
-                            <input type="text" name="areaLastSeen" id="areaLastSeen" value={formData.areaLastSeen} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder='San Miguel' required="" />
+                            <input type="text" name="areaLastSeen" id="areaLastSeen" value={formData.areaLastSeen} onChange={handleChange} className={inpuTextClass} placeholder='San Miguel' required="" />
                         </div>
 
                         <div className="w-full">
                             <label htmlFor="crossStreet" className="block mb-2 text-sm font-medium text-gray-900">Cross Street</label>
-                            <input type="text" name="crossStreet" id="crossStreet" value={formData.crossStreet} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder='Av. La Marina' required="" />
+                            <input type="text" name="crossStreet" id="crossStreet" value={formData.crossStreet} onChange={handleChange} className={inpuTextClass} placeholder='Av. La Marina' required="" />
                         </div>
 
                         <div className="w-full">
                             <label htmlFor="nearestLandmark" className="block mb-2 text-sm font-medium text-gray-900">Nearest Landmark</label>
-                            <input type="text" name="nearestLandmark" id="nearestLandmark" value={formData.nearestLandmark} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder='Parque de la Muralla' required="" />
+                            <input type="text" name="nearestLandmark" id="nearestLandmark" value={formData.nearestLandmark} onChange={handleChange} className={inpuTextClass} placeholder='Parque de la Muralla' required="" />
                         </div>
 
                         <div className="w-full">
                             <label htmlFor="ddLat" className="block mb-2 text-sm font-medium text-gray-900">Latitude</label>
-                            <input type="text" name="ddLat" id="ddLat" value={formData.ddLat} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder='-12.0851' required="" />
+                            <input type="text" name="ddLat" id="ddLat" value={formData.ddLat} onChange={handleChange} className={inpuTextClass} placeholder='-12.0851' required="" />
                         </div>
 
                         <div className="w-full">
                             <label htmlFor="ddLon" className="block mb-2 text-sm font-medium text-gray-900">Longitude</label>
-                            <input type="text" name="ddLon" id="ddLon" value={formData.ddLon} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder='-77.074' required="" />
+                            <input type="text" name="ddLon" id="ddLon" value={formData.ddLon} onChange={handleChange} className={inpuTextClass} placeholder='-77.074' required="" />
                         </div>
 
                         <hr className="sm:col-span-2" />
 
                         <div className="w-full">
                             <label htmlFor="breed" className="block mb-2 text-sm font-medium text-gray-900">Breed</label>
-                            <input type="text" name="breed" id="breed" value={formData.breed} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder='Husky' required="" />
+                            <input type="text" name="breed" id="breed" value={formData.breed} onChange={handleChange} className={inpuTextClass} placeholder='Husky' required="" />
                         </div>
 
                         <div>
                             <label htmlFor="gender" className="block mb-2 text-sm font-medium text-gray-900">Gender</label>
-                            <select id="gender" name="gender" value={formData.gender} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+                            <select id="gender" name="gender" value={formData.gender} onChange={handleChange} className={inputSelectClass}>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Unknow">Unknow</option>
@@ -139,35 +143,35 @@ const ReportForm = ({ initialData = {}, onSubmit, species }) => {
 
                         <div className="w-full">
                             <label htmlFor="color" className="block mb-2 text-sm font-medium text-gray-900">Color</label>
-                            <input type="text" name="color" id="color" value={formData.color} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder='Black' required="" />
+                            <input type="text" name="color" id="color" value={formData.color} onChange={handleChange} className={inpuTextClass} placeholder='Black' required="" />
                         </div>
 
                         <div className="w-full">
                             <label htmlFor="size" className="block mb-2 text-sm font-medium text-gray-900">Size</label>
-                            <input type="text" name="size" id="size" value={formData.size} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder='Small' required="" />
+                            <input type="text" name="size" id="size" value={formData.size} onChange={handleChange} className={inpuTextClass} placeholder='Small' required="" />
                         </div>
 
                         <div className="w-full">
                             <label htmlFor="age" className="block mb-2 text-sm font-medium text-gray-900">Age</label>
-                            <input type="number" name="age" id="age" value={formData.age} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder='3' required="" />
+                            <input type="number" name="age" id="age" value={formData.age} onChange={handleChange} className={inpuTextClass} placeholder='3' required="" />
                         </div>
 
                         <div className="w-full">
                             <label htmlFor="health" className="block mb-2 text-sm font-medium text-gray-900">Health</label>
-                            <input type="text" name="health" id="health" value={formData.health} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder='She needs her medication' required="" />
+                            <input type="text" name="health" id="health" value={formData.health} onChange={handleChange} className={inpuTextClass} placeholder='She needs her medication' required="" />
                         </div>
 
                         <div className="w-full">
                             <label className="inline-flex items-center cursor-pointer">
                                 <input type="checkbox" name="haveCollar" checked={formData.haveCollar} onChange={handleCollarChange} className="sr-only peer" />
-                                <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
+                                <div className={inpuRadioClass}></div>
                                 <span className="ms-3 text-sm font-medium text-gray-900">Have collar?</span>
                             </label>
                         </div>
 
                         <div className="sm:col-span-2">
                             <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900">Description</label>
-                            <textarea id="description" name="description" value={formData.description} onChange={handleChange} rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Missing Labrador mix, golden coat with white chest patch. Last seen near Oak Street. Reward. Contact me. Thank you!"></textarea>
+                            <textarea id="description" name="description" value={formData.description} onChange={handleChange} rows="4" className={inpuTextareaClass} placeholder="Missing Labrador mix, golden coat with white chest patch. Last seen near Oak Street. Reward. Thank you!"></textarea>
                         </div>
                     </div>
                     <div className="flex items-center space-x-4">

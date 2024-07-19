@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import ReportForm from '../../components/ReportForm'
+import config from '@/config'
 
 const EditReportPage = ({ params }) => {
     const { id } = params
@@ -32,7 +33,7 @@ const EditReportPage = ({ params }) => {
     useEffect(() => {
         const fetchReport = async () => {
             try {
-                const response = await fetch(`https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/animals/${id}`);
+                const response = await fetch(`${config.apis.animals}/${id}`);
                 if (!response.ok) {
                     throw new Error('Error getting report');
                 }
@@ -72,7 +73,7 @@ const EditReportPage = ({ params }) => {
     useEffect(() => {
         const fetchSpecies = async () => {
             try {
-                const response = await fetch(`https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/species`);
+                const response = await fetch(`${config.apis.species}`);
                 if (!response.ok) {
                     throw new Error('Error getting species');
                 }
@@ -89,7 +90,7 @@ const EditReportPage = ({ params }) => {
     const handleUpdateReport = async (formData) => {
         const last = new Date(formData)
         try {
-            const response = await fetch(`https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/animals/${id}`, {
+            const response = await fetch(`${config.apis.animals}/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

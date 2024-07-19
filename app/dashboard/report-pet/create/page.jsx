@@ -2,6 +2,7 @@
 import ReportForm from '../components/ReportForm';
 import { useEffect, useState } from 'react';
 import { useAuthContext } from '@/app/context/AuthWrapper';
+import config from '@/config';
 
 const CreateReportPage = () => {
     const [species, setSpecies] = useState([]);
@@ -33,7 +34,7 @@ const CreateReportPage = () => {
     useEffect(() => {
         const fetchSpecies = async () => {
             try {
-                const response = await fetch(`https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/species`);
+                const response = await fetch(`${config.apis.species}`);
 
                 if (!response.ok) {
                     throw new Error('Error getting species');
@@ -53,7 +54,7 @@ const CreateReportPage = () => {
         try {
             if (user) {
                 const query = { ...formData, reward: parseFloat(formData.reward), ddLat: parseFloat(formData.ddLat), ddLon: parseFloat(formData.ddLon), age: parseInt(formData.age), userId: user.id }
-                const response = await fetch(`https://us-central1-pets-api-f1d89.cloudfunctions.net/app/api/v1/animals`, {
+                const response = await fetch(`${config.apis.animals}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

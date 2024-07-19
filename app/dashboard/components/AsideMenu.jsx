@@ -59,7 +59,7 @@ const Menu = () => {
                 <span className='flex-1 ms-3 whitespace-nowrap '>
                   My Reports
                 </span>
-                <span className='inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full'>
+                <span className='inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-primary-800 bg-primary-100 rounded-full'>
                   7
                 </span>
               </Link>
